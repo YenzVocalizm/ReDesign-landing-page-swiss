@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Swiss Security - Seguridad Inteligente</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;700&amp;family=Montserrat:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-secondary-fixed": "#191c20",
+                        "on-surface": "#1a1c1c",
+                        "surface-container-lowest": "#ffffff",
+                        "on-tertiary-fixed-variant": "#3f484f",
+                        "surface-container-highest": "#e2e2e2",
+                        "error-container": "#ffdad6",
+                        "background": "#f9f9f9",
+                        "error": "#ba1a1a",
+                        "on-background": "#1a1c1c",
+                        "secondary-container": "#dfdfe6",
+                        "on-primary-container": "#fff5f3",
+                        "on-tertiary-container": "#f0f7ff",
+                        "on-surface-variant": "#5e3f3b",
+                        "surface-variant": "#e2e2e2",
+                        "secondary-fixed-dim": "#c5c6cc",
+                        "secondary": "#5d5e64",
+                        "outline-variant": "#e9bcb6",
+                        "on-error-container": "#93000a",
+                        "surface-tint": "#c0000c",
+                        "surface-dim": "#dadada",
+                        "surface-container-high": "#e8e8e8",
+                        "on-secondary": "#ffffff",
+                        "surface-container": "#eeeeee",
+                        "on-secondary-fixed-variant": "#45474c",
+                        "surface": "#f9f9f9",
+                        "primary-fixed-dim": "#ffb4aa",
+                        "on-primary-fixed-variant": "#930007",
+                        "inverse-primary": "#ffb4aa",
+                        "on-secondary-container": "#616268",
+                        "on-tertiary-fixed": "#141d23",
+                        "primary-container": "#e30613",
+                        "on-primary": "#ffffff",
+                        "tertiary-fixed": "#dbe4ed",
+                        "surface-container-low": "#f3f3f4",
+                        "on-tertiary": "#ffffff",
+                        "tertiary": "#515a61",
+                        "tertiary-container": "#69727a",
+                        "inverse-surface": "#2f3131",
+                        "inverse-on-surface": "#f0f1f1",
+                        "on-error": "#ffffff",
+                        "outline": "#936e69",
+                        "surface-bright": "#f9f9f9",
+                        "primary-fixed": "#ffdad5",
+                        "primary": "#b5000b",
+                        "tertiary-fixed-dim": "#bfc8d0",
+                        "secondary-fixed": "#e2e2e8",
+                        "on-primary-fixed": "#410001"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "stack-lg": "32px",
+                        "section-padding": "80px",
+                        "stack-sm": "8px",
+                        "stack-md": "16px",
+                        "container-max": "1280px",
+                        "margin-mobile": "20px",
+                        "margin-desktop": "64px",
+                        "gutter": "24px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Hanken Grotesk"],
+                        "label-bold": ["Hanken Grotesk"],
+                        "headline-xl": ["Montserrat"],
+                        "headline-md": ["Montserrat"],
+                        "headline-lg": ["Montserrat"],
+                        "headline-lg-mobile": ["Montserrat"],
+                        "body-md": ["Hanken Grotesk"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "label-bold": ["14px", {"lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "700"}],
+                        "headline-xl": ["48px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                        "headline-lg": ["32px", {"lineHeight": "1.25", "fontWeight": "700"}],
+                        "headline-lg-mobile": ["28px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .tech-shadow { box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); }
+        .tech-shadow-hover:hover { box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); transform: translateY(-2px); }
+    </style>
+</head>
+<body class="bg-surface font-body-lg text-on-surface antialiased overflow-x-hidden">
+<!-- 1. Header (TopNavBar) -->
+<nav class="bg-surface/90 backdrop-blur-md full-width top-0 sticky border-b border-outline-variant shadow-sm z-50">
+<div class="flex justify-between items-center px-margin-desktop h-20 w-full max-w-container-max mx-auto">
+<div class="flex items-center gap-4">
+<img alt="Swiss Security Logo" class="h-10 w-auto" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBHsgymrIpfM2Nj60fa_hoLVHuyO9b3utdFYU_pSLSFkQm25sDq0mbDFudnqHNCW7pPw2SBojiUD4SmB_0qIWGaxVlVBlGRRRwYSF1K_HzeDD7fmpBnryAO7ISaSylugzBSC1wu5CbubSU8_3HpWK8UwA-CvTf91oIWPfF1ruIenR_J64u7e6sqbyx5AFt4mPTLomJX0ZAR5tCFyhrDmBRWHQDj3lSuoWW_BCrYXGz3gq7-pjpzTv5h_RuXFJzD1ORvOw"/>
+<span class="font-headline-md text-headline-md font-bold text-primary md:hidden lg:block">Swiss Security</span>
+</div>
+<div class="hidden md:flex gap-8 items-center">
+<a class="text-secondary hover:text-primary transition-colors font-body-md text-body-md" href="#servicios">Servicios</a>
+<a class="text-secondary hover:text-primary transition-colors font-body-md text-body-md" href="#industrias">Industrias</a>
+<a class="text-secondary hover:text-primary transition-colors font-body-md text-body-md" href="#nosotros">Nosotros</a>
+<a class="text-secondary hover:text-primary transition-colors font-body-md text-body-md" href="#exito">Casos de Éxito</a>
+</div>
+<a class="bg-primary text-on-primary px-6 py-3 rounded font-label-bold text-label-bold hover:bg-[#C20510] transition-colors tech-shadow scale-95 active:scale-90 flex items-center justify-center min-h-[48px]" href="#contacto">
+                Cotizar Ahora
+            </a>
+</div>
+</nav>
+<!-- 2. Hero Section -->
+<header class="relative w-full min-h-[85vh] flex items-center bg-on-secondary-fixed">
+<div class="absolute inset-0 w-full h-full">
+<div class="w-full h-full bg-cover bg-center opacity-40 mix-blend-overlay" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAvQMg6Uxay20u99_dKv__OzojeonYZoG7r2HwfIcREhLzsEoKRhdXESI3kq3aLfpozPc5e-zUHr7NmPpsadOVItXf1IIiGKSQb9vxvsFkZh27mo52p_SLuep-6HUEffNEvw-QDYUeVFLb-mCOYVA3QPFJHw29aGaQi6m_qeP3EPjaj5ECfCvd_mVBvxHxmhYR2_cHzUToPxcloLm8BkSgFcWBrwJmaPVVbTGIMWDp6sTBs_ltduGRB_-J4GoXDWBnpbQ')"></div>
+<div class="absolute inset-0 bg-gradient-to-r from-on-secondary-fixed/90 to-transparent"></div>
+</div>
+<div class="relative z-10 w-full max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+<div class="max-w-3xl">
+<span class="inline-block px-3 py-1 mb-6 bg-primary text-on-primary font-label-bold text-label-bold rounded-sm uppercase tracking-wider">Líderes en Seguridad</span>
+<h1 class="font-headline-xl text-headline-xl text-white mb-6">Seguridad Inteligente para Empresas en Chile: Tecnología IA y Guardias OS10</h1>
+<p class="font-headline-md text-headline-md text-surface-container-high mb-10 max-w-2xl font-normal">Protección 24/7 con monitoreo avanzado y personal certificado para su continuidad operativa.</p>
+<div class="flex flex-col sm:flex-row gap-4">
+<a class="bg-primary text-on-primary px-8 py-4 rounded font-label-bold text-label-bold hover:bg-[#C20510] transition-colors text-center min-h-[48px] flex items-center justify-center" href="#contacto">
+                        Solicitar Evaluación Gratuita
+                    </a>
+<a class="bg-surface-container-high text-on-surface px-8 py-4 rounded font-label-bold text-label-bold hover:bg-surface transition-colors text-center min-h-[48px] flex items-center justify-center" href="#servicios">
+                        Ver Servicios
+                    </a>
+</div>
+</div>
+</div>
+</header>
+<!-- 3. Trust Bar -->
+<section class="bg-on-secondary-fixed py-8 border-t border-on-secondary-fixed-variant">
+<div class="w-full max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+<p class="text-center font-label-bold text-label-bold text-surface-variant uppercase tracking-widest mb-6">Empresas e Instituciones que confían en nosotros</p>
+<div class="flex flex-wrap justify-center items-center gap-8 md:gap-16 opacity-70 grayscale">
+<span class="material-symbols-outlined text-4xl text-white" style="font-variation-settings: 'FILL' 1;">storefront</span>
+<span class="material-symbols-outlined text-4xl text-white" style="font-variation-settings: 'FILL' 1;">apartment</span>
+<span class="material-symbols-outlined text-4xl text-white" style="font-variation-settings: 'FILL' 1;">account_balance</span>
+<span class="material-symbols-outlined text-4xl text-white" style="font-variation-settings: 'FILL' 1;">factory</span>
+<div class="flex items-center gap-2 border border-surface-variant/30 rounded px-3 py-1">
+<span class="material-symbols-outlined text-primary">verified_user</span>
+<span class="text-white font-label-bold text-label-bold text-xs">Guardias Certificados OS10</span>
+</div>
+</div>
+</div>
+</section>
+<!-- 4. Problem/Solution Section -->
+<section class="bg-on-secondary-fixed py-section-padding text-white" id="nosotros">
+<div class="w-full max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+<div class="text-center mb-16">
+<h2 class="font-headline-lg text-headline-lg mb-4">¿Por qué dejar tu seguridad en nuestras manos?</h2>
+<p class="font-body-lg text-body-lg text-surface-container-high max-w-2xl mx-auto">Nuestro enfoque integral garantiza que no haya puntos ciegos en la protección de sus activos.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter">
+<!-- Card 1 -->
+<div class="bg-surface text-on-surface p-8 rounded-lg border border-outline-variant tech-shadow transition-all tech-shadow-hover">
+<div class="w-12 h-12 bg-primary-container/10 rounded-full flex items-center justify-center mb-6 text-primary">
+<span class="material-symbols-outlined text-3xl">timer</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-xl mb-3">Respuesta Inmediata 24/7</h3>
+<p class="font-body-md text-body-md text-secondary">Central de monitoreo activa las 24 horas para reaccionar ante cualquier eventualidad en tiempo récord.</p>
+</div>
+<!-- Card 2 -->
+<div class="bg-surface text-on-surface p-8 rounded-lg border border-outline-variant tech-shadow transition-all tech-shadow-hover">
+<div class="w-12 h-12 bg-primary-container/10 rounded-full flex items-center justify-center mb-6 text-primary">
+<span class="material-symbols-outlined text-3xl">memory</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-xl mb-3">Tecnología IA</h3>
+<p class="font-body-md text-body-md text-secondary">Análisis predictivo y reconocimiento facial para anticipar amenazas antes de que ocurran.</p>
+</div>
+<!-- Card 3 -->
+<div class="bg-surface text-on-surface p-8 rounded-lg border border-outline-variant tech-shadow transition-all tech-shadow-hover">
+<div class="w-12 h-12 bg-primary-container/10 rounded-full flex items-center justify-center mb-6 text-primary">
+<span class="material-symbols-outlined text-3xl">shield_person</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-xl mb-3">Personal OS10</h3>
+<p class="font-body-md text-body-md text-secondary">Guardias de seguridad rigurosamente seleccionados, entrenados y certificados por Carabineros de Chile.</p>
+</div>
+<!-- Card 4 -->
+<div class="bg-surface text-on-surface p-8 rounded-lg border border-outline-variant tech-shadow transition-all tech-shadow-hover">
+<div class="w-12 h-12 bg-primary-container/10 rounded-full flex items-center justify-center mb-6 text-primary">
+<span class="material-symbols-outlined text-3xl">domain_verification</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-xl mb-3">Facility Services</h3>
+<p class="font-body-md text-body-md text-secondary">Integración de servicios de mantenimiento y gestión para una operación fluida y segura.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- 5. Services Section -->
+<section class="bg-surface py-section-padding" id="servicios">
+<div class="w-full max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+<div class="text-center mb-16">
+<span class="text-primary font-label-bold text-label-bold uppercase tracking-wider mb-2 block">Nuestra Experiencia</span>
+<h2 class="font-headline-lg text-headline-lg text-on-surface">Soluciones de Seguridad Integral a tu Medida</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+<!-- Service 1 -->
+<div class="bg-surface-container-lowest rounded-lg border border-surface-variant tech-shadow border-t-4 border-t-primary overflow-hidden flex flex-col h-full tech-shadow-hover transition-all">
+<div class="p-8 flex-grow">
+<h3 class="font-headline-md text-headline-md text-2xl mb-4 text-on-surface">Cámaras y Monitoreo (IA)</h3>
+<p class="font-body-md text-body-md text-secondary mb-6">Sistemas CCTV de alta resolución integrados con analítica de video por Inteligencia Artificial para detección proactiva de intrusos.</p>
+</div>
+<div class="p-8 pt-0 mt-auto">
+<a class="inline-flex items-center justify-center bg-primary text-white px-6 py-3 rounded font-label-bold text-label-bold w-full hover:bg-[#C20510] transition-colors min-h-[48px]" href="#contacto">
+                            Saber más
+                        </a>
+</div>
+</div>
+<!-- Service 2 -->
+<div class="bg-surface-container-lowest rounded-lg border border-surface-variant tech-shadow border-t-4 border-t-primary overflow-hidden flex flex-col h-full tech-shadow-hover transition-all">
+<div class="p-8 flex-grow">
+<h3 class="font-headline-md text-headline-md text-2xl mb-4 text-on-surface">Guardias Certificados</h3>
+<p class="font-body-md text-body-md text-secondary mb-6">Personal de seguridad física altamente capacitado, con certificación OS10 al día, para control de acceso y rondas preventivas.</p>
+</div>
+<div class="p-8 pt-0 mt-auto">
+<a class="inline-flex items-center justify-center bg-primary text-white px-6 py-3 rounded font-label-bold text-label-bold w-full hover:bg-[#C20510] transition-colors min-h-[48px]" href="#contacto">
+                            Saber más
+                        </a>
+</div>
+</div>
+<!-- Service 3 -->
+<div class="bg-surface-container-lowest rounded-lg border border-surface-variant tech-shadow border-t-4 border-t-primary overflow-hidden flex flex-col h-full tech-shadow-hover transition-all">
+<div class="p-8 flex-grow">
+<h3 class="font-headline-md text-headline-md text-2xl mb-4 text-on-surface">TI &amp; Facility Services</h3>
+<p class="font-body-md text-body-md text-secondary mb-6">Soluciones tecnológicas integrales y gestión de instalaciones para asegurar la continuidad operativa de su negocio sin contratiempos.</p>
+</div>
+<div class="p-8 pt-0 mt-auto">
+<a class="inline-flex items-center justify-center bg-primary text-white px-6 py-3 rounded font-label-bold text-label-bold w-full hover:bg-[#C20510] transition-colors min-h-[48px]" href="#contacto">
+                            Saber más
+                        </a>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- 6. Industries Section -->
+<section class="bg-primary py-section-padding text-white" id="industrias">
+<div class="w-full max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop text-center">
+<h2 class="font-headline-lg text-headline-lg mb-16">Estamos Presentes</h2>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-y-12 gap-x-8">
+<div class="flex flex-col items-center">
+<span class="material-symbols-outlined text-6xl mb-4" style="font-variation-settings: 'wght' 200;">storefront</span>
+<span class="font-label-bold text-label-bold uppercase tracking-wider text-sm">Retail</span>
+</div>
+<div class="flex flex-col items-center">
+<span class="material-symbols-outlined text-6xl mb-4" style="font-variation-settings: 'wght' 200;">domain</span>
+<span class="font-label-bold text-label-bold uppercase tracking-wider text-sm">Empresas</span>
+</div>
+<div class="flex flex-col items-center">
+<span class="material-symbols-outlined text-6xl mb-4" style="font-variation-settings: 'wght' 200;">settings</span>
+<span class="font-label-bold text-label-bold uppercase tracking-wider text-sm">Minería</span>
+</div>
+<div class="flex flex-col items-center">
+<span class="material-symbols-outlined text-6xl mb-4" style="font-variation-settings: 'wght' 200;">engineering</span>
+<span class="font-label-bold text-label-bold uppercase tracking-wider text-sm">Inmobiliaria y<br/>Construcción</span>
+</div>
+<div class="flex flex-col items-center">
+<span class="material-symbols-outlined text-6xl mb-4" style="font-variation-settings: 'wght' 200;">school</span>
+<span class="font-label-bold text-label-bold uppercase tracking-wider text-sm">Instituciones<br/>Educacionales</span>
+</div>
+<div class="flex flex-col items-center">
+<span class="material-symbols-outlined text-6xl mb-4" style="font-variation-settings: 'wght' 200;">home_work</span>
+<span class="font-label-bold text-label-bold uppercase tracking-wider text-sm">Condominios</span>
+</div>
+<div class="flex flex-col items-center">
+<span class="material-symbols-outlined text-6xl mb-4" style="font-variation-settings: 'wght' 200;">account_balance</span>
+<span class="font-label-bold text-label-bold uppercase tracking-wider text-sm">Instituciones<br/>Bancarias</span>
+</div>
+<div class="flex flex-col items-center">
+<span class="material-symbols-outlined text-6xl mb-4" style="font-variation-settings: 'wght' 200;">flight_takeoff</span>
+<span class="font-label-bold text-label-bold uppercase tracking-wider text-sm">Aeropuertos</span>
+</div>
+</div>
+</div>
+</section>
+<!-- 7. Social Proof Section -->
+<section class="bg-surface-container-low py-section-padding" id="exito">
+<div class="w-full max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+<div class="text-center mb-16">
+<h2 class="font-headline-lg text-headline-lg text-on-surface">Resultados que hablan por sí mismos</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+<div class="bg-surface-container-lowest p-8 rounded-lg tech-shadow border border-surface-variant">
+<div class="flex text-primary mb-4">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant italic mb-6">"Desde que implementamos el monitoreo con IA de Swiss Security, los incidentes de intrusión en nuestras bodegas se redujeron a cero. Respuesta impecable."</p>
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-secondary-container flex items-center justify-center text-on-surface font-label-bold">JC</div>
+<div>
+<p class="font-label-bold text-label-bold text-on-surface">Jefe de Operaciones</p>
+<p class="font-body-md text-sm text-secondary">Centro Logístico Santiago</p>
+</div>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-8 rounded-lg tech-shadow border border-surface-variant">
+<div class="flex text-primary mb-4">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant italic mb-6">"La presentación y profesionalismo de los guardias es notable. Se nota la diferencia de tener personal verdaderamente certificado y bien entrenado."</p>
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-secondary-container flex items-center justify-center text-on-surface font-label-bold">MA</div>
+<div>
+<p class="font-label-bold text-label-bold text-on-surface">Administración</p>
+<p class="font-body-md text-sm text-secondary">Edificio Corporativo Las Condes</p>
+</div>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-8 rounded-lg tech-shadow border border-surface-variant flex flex-col justify-center items-center text-center bg-on-secondary-fixed text-white border-none">
+<span class="material-symbols-outlined text-primary text-5xl mb-4">trending_up</span>
+<h3 class="font-headline-xl text-headline-xl mb-2">99.8%</h3>
+<p class="font-body-md text-body-md text-surface-container-high">Efectividad en prevención de siniestros durante 2023 en instalaciones corporativas.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- 8. Lead Magnet / Contact Section -->
+<section class="bg-surface-container-lowest py-section-padding border-t border-surface-variant" id="contacto">
+<div class="w-full max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+<!-- Form -->
+<div>
+<h2 class="font-headline-xl text-headline-xl text-on-surface mb-4 uppercase">¡Estemos en<br/>Contacto!</h2>
+<p class="font-body-md text-body-md text-secondary mb-8">Ante cualquier duda o consulta envíanos un mensaje y te responderemos a la brevedad.</p>
+<form class="space-y-4">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<input class="w-full border border-secondary-fixed-dim rounded px-4 py-3 font-body-md text-on-surface focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-colors" placeholder="Nombre" type="text"/>
+<input class="w-full border border-secondary-fixed-dim rounded px-4 py-3 font-body-md text-on-surface focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-colors" placeholder="Email" type="email"/>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<input class="w-full border border-secondary-fixed-dim rounded px-4 py-3 font-body-md text-on-surface focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-colors" placeholder="Teléfono" type="tel"/>
+<input class="w-full border border-secondary-fixed-dim rounded px-4 py-3 font-body-md text-on-surface focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-colors" placeholder="Asunto" type="text"/>
+</div>
+<textarea class="w-full border border-secondary-fixed-dim rounded px-4 py-3 font-body-md text-on-surface focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-colors resize-none" placeholder="Mensaje" rows="4"></textarea>
+<button class="bg-tertiary text-white px-8 py-3 rounded font-label-bold text-label-bold hover:bg-on-tertiary-fixed-variant transition-colors min-h-[48px] w-full sm:w-auto" type="submit">
+                            Enviar
+                        </button>
+</form>
+</div>
+<!-- Contact Info & Image -->
+<div class="flex flex-col gap-8">
+<div class="space-y-6">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary text-2xl" style="font-variation-settings: 'FILL' 1;">mail</span>
+<span class="font-body-md text-on-surface">administracion@ssecurity.cl</span>
+</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary text-2xl" style="font-variation-settings: 'FILL' 1;">location_on</span>
+<span class="font-body-md text-on-surface">Av. Presidente Kennedy 5600, Piso 4, Vitacura.</span>
+</div>
+</div>
+<div class="relative h-64 md:h-80 w-full rounded-lg overflow-hidden hidden md:block">
+<img class="object-cover w-full h-full" data-alt="A professional young woman in a modern corporate setting, smiling and holding a digital tablet. She represents excellent customer service and modern security administration. Soft, bright lighting, high-resolution photography, corporate aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDI7aeDg6MIh3DI_gBEL_K8ZSK5n87-qDwfwzV1oeGGKIJIHv2qO3RwQCHmdtOhpko6DXhdUArUMS2ycGjspteDNxg3yWDu827vVyK0scwpxi2sfPWBJXeDyqHW7hlEQT16KCfN-25v4QjDQ60V9gEP9VxgRNu57nHyf9gmKq5Ls7P9MGKV6NFbhWxmRS4MA4a1nueAybbb-rHNJvwpAnieT8Hhoab-EV4esQbp93vH1A0IAyue8XMU"/>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- 9. Footer -->
+<footer class="bg-on-secondary-fixed dark:bg-surface-container-lowest full-width flat no shadows">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-gutter px-margin-desktop py-section-padding w-full max-w-container-max mx-auto">
+<div class="col-span-1 md:col-span-2">
+<span class="font-headline-md text-headline-md font-bold text-white block mb-4">Swiss Security</span>
+<p class="text-secondary-fixed-dim font-body-md text-body-md max-w-sm mb-6">
+                    © 2024 Swiss Security. Todos los derechos reservados.
+                </p>
+</div>
+<div class="col-span-1">
+<h4 class="font-headline-md text-headline-md text-white mb-4 text-lg">Legal</h4>
+<ul class="space-y-2">
+<li><a class="text-secondary-fixed-dim hover:text-white transition-colors font-body-md text-body-md hover:underline decoration-primary transition-all" href="#">Privacidad</a></li>
+<li><a class="text-secondary-fixed-dim hover:text-white transition-colors font-body-md text-body-md hover:underline decoration-primary transition-all" href="#">Términos</a></li>
+</ul>
+</div>
+<div class="col-span-1">
+<h4 class="font-headline-md text-headline-md text-white mb-4 text-lg">Ayuda</h4>
+<ul class="space-y-2">
+<li><a class="text-secondary-fixed-dim hover:text-white transition-colors font-body-md text-body-md hover:underline decoration-primary transition-all" href="#">Contacto</a></li>
+<li><a class="text-secondary-fixed-dim hover:text-white transition-colors font-body-md text-body-md hover:underline decoration-primary transition-all" href="#">Soporte</a></li>
+</ul>
+</div>
+</div>
+</footer>
+<!-- WhatsApp FAB -->
+<a aria-label="Contactar por WhatsApp" class="fixed bottom-8 right-8 bg-[#25D366] text-white p-4 rounded-full shadow-lg z-50 hover:scale-110 transition-transform tech-shadow group" href="#">
+<svg fill="currentColor" height="32" viewbox="0 0 16 16" width="32" xmlns="http://www.w3.org/2000/svg">
+<path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z"></path>
+</svg>
+</a>
+</body></html>

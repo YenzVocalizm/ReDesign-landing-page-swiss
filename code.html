@@ -1,0 +1,1085 @@
+<!DOCTYPE html>
+<html class="light scroll-smooth" lang="es">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Swiss Security - Seguridad Inteligente y Guardias OS10</title>
+    
+    <!-- Tailwind Play CDN -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    
+    <!-- Google Fonts: Montserrat, Hanken Grotesk & Material Symbols -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#b5000b",
+                        "primary-hover": "#930007",
+                        "primary-container": "#e30613",
+                        "on-primary": "#ffffff",
+                        "on-primary-container": "#fff5f3",
+                        "on-surface": "#1a1c1c",
+                        "on-surface-variant": "#5e3f3b",
+                        "surface": "#f9f9f9",
+                        "surface-dim": "#dadada",
+                        "surface-bright": "#f9f9f9",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container-low": "#f3f3f4",
+                        "surface-container": "#eeeeee",
+                        "surface-container-high": "#e8e8e8",
+                        "surface-container-highest": "#e2e2e2",
+                        "outline": "#936e69",
+                        "outline-variant": "#e9bcb6",
+                        "secondary": "#5d5e64",
+                        "on-secondary": "#ffffff",
+                        "secondary-container": "#dfdfe6",
+                        "on-secondary-container": "#616268",
+                        "on-secondary-fixed": "#191c20",
+                        "on-secondary-fixed-variant": "#2c2e33",
+                        "tertiary": "#515a61",
+                        "error": "#ba1a1a"
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.5rem",
+                        "md": "0.75rem",
+                        "lg": "1rem",
+                        "xl": "1.5rem",
+                        "2xl": "2rem",
+                        "capsule": "60px",
+                        "full": "9999px"
+                    },
+                    spacing: {
+                        "container-max": "1280px",
+                        "gutter": "24px",
+                        "margin-desktop": "64px",
+                        "margin-mobile": "20px",
+                        "section-padding": "80px"
+                    },
+                    fontFamily: {
+                        "headline": ["Montserrat", "sans-serif"],
+                        "body": ["Hanken Grotesk", "sans-serif"]
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        :root {
+            --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+            --ease-in-out-smooth: cubic-bezier(0.65, 0, 0.35, 1);
+        }
+
+        body {
+            font-family: 'Hanken Grotesk', sans-serif;
+            background-color: #f9f9f9;
+            color: #1a1c1c;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, .font-headline {
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        /* Technical shadows according to DESIGN.md */
+        .tech-shadow {
+            box-shadow: 0 4px 20px -2px rgba(25, 28, 32, 0.08), 0 2px 6px -1px rgba(25, 28, 32, 0.04);
+        }
+        .tech-shadow-hover {
+            transition: transform 0.4s var(--ease-out-expo), box-shadow 0.4s var(--ease-out-expo), border-color 0.4s ease;
+        }
+        .tech-shadow-hover:hover {
+            box-shadow: 0 16px 32px -4px rgba(25, 28, 32, 0.12), 0 6px 12px -2px rgba(25, 28, 32, 0.06);
+            transform: translateY(-4px);
+        }
+
+        /* Video-inspired Capsule Card Hover */
+        .capsule-card {
+            transition: all 0.5s var(--ease-out-expo);
+        }
+        .capsule-card:hover {
+            transform: translateY(-8px);
+            border-color: #b5000b;
+            box-shadow: 0 20px 40px -10px rgba(181, 0, 11, 0.15);
+        }
+        .capsule-card:hover .capsule-img {
+            transform: scale(1.08) translateY(-4px);
+        }
+        .capsule-img {
+            transition: transform 0.6s var(--ease-out-expo);
+        }
+
+        /* Scroll Reveal Animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(32px);
+            transition: opacity 0.85s var(--ease-out-expo), transform 0.85s var(--ease-out-expo);
+            will-change: opacity, transform;
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .reveal-scale {
+            opacity: 0;
+            transform: scale(0.92);
+            transition: opacity 0.9s var(--ease-out-expo), transform 0.9s var(--ease-out-expo);
+            will-change: opacity, transform;
+        }
+        .reveal-scale.active {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        /* Stagger Delays */
+        .delay-100 { transition-delay: 100ms; }
+        .delay-200 { transition-delay: 200ms; }
+        .delay-300 { transition-delay: 300ms; }
+        .delay-400 { transition-delay: 400ms; }
+        .delay-500 { transition-delay: 500ms; }
+
+        /* Floating Micro-animation */
+        @keyframes floatSlow {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-8px); }
+        }
+        .animate-float {
+            animation: floatSlow 5s ease-in-out infinite;
+        }
+
+        /* Subtle Pulse for Live Badges */
+        @keyframes pulseDot {
+            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+            70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(37, 211, 102, 0); }
+            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+        }
+        .live-dot {
+            animation: pulseDot 2s infinite;
+        }
+
+        /* Interactive Link Underline from Video */
+        .hover-link {
+            position: relative;
+        }
+        .hover-link::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            transform: scaleX(0);
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background-color: #b5000b;
+            transform-origin: bottom right;
+            transition: transform 0.3s var(--ease-out-expo);
+        }
+        .hover-link:hover::after {
+            transform: scaleX(1);
+            transform-origin: bottom left;
+        }
+
+        /* Shimmer on Button */
+        .btn-shimmer {
+            position: relative;
+            overflow: hidden;
+        }
+        .btn-shimmer::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -60%;
+            width: 40%;
+            height: 200%;
+            background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.25) 50%, rgba(255,255,255,0) 100%);
+            transform: rotate(30deg);
+            transition: none;
+        }
+        .btn-shimmer:hover::after {
+            left: 120%;
+            transition: all 0.75s ease-in-out;
+        }
+
+        /* Custom Scrollbar for Carousel */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        /* Huge Brand Watermark Typography from Video (00:13) */
+        .brand-watermark {
+            font-size: clamp(3rem, 13vw, 11rem);
+            font-weight: 900;
+            letter-spacing: -0.04em;
+            line-height: 0.85;
+            user-select: none;
+            text-transform: lowercase;
+            color: #1a1c1c;
+            opacity: 0.95;
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface antialiased overflow-x-hidden selection:bg-primary selection:text-white">
+
+    <!-- 1. Top Navigation Bar with Dynamic Scroll Response -->
+    <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-surface/90 backdrop-blur-md border-b border-surface-container-high py-4">
+        <div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop flex justify-between items-center">
+            <!-- Brand Logo -->
+            <a href="#" class="flex items-center gap-3 group">
+                <img src="fotos/logo_dark.png" alt="Swiss Security - Seguridad Inteligente y Guardias OS10" class="h-10 md:h-11 w-auto object-contain group-hover:scale-105 transition-transform drop-shadow-sm" />
+            </a>
+
+            <!-- Desktop Nav Links with Animated Underline -->
+            <div class="hidden md:flex items-center gap-8">
+                <a href="#servicios" class="hover-link font-medium text-sm text-secondary hover:text-on-surface transition-colors">Servicios</a>
+                <a href="#experiencia" class="hover-link font-medium text-sm text-secondary hover:text-on-surface transition-colors">Tecnología</a>
+                <a href="#soluciones" class="hover-link font-medium text-sm text-secondary hover:text-on-surface transition-colors">Soluciones</a>
+                <a href="#industrias" class="hover-link font-medium text-sm text-secondary hover:text-on-surface transition-colors">Industrias</a>
+                <a href="#exito" class="hover-link font-medium text-sm text-secondary hover:text-on-surface transition-colors">Casos de Éxito</a>
+            </div>
+
+            <!-- Action CTA Button -->
+            <div class="hidden sm:flex items-center gap-4">
+                <a href="#contacto" class="btn-shimmer bg-primary hover:bg-[#C20510] text-white px-6 py-2.5 rounded-lg text-sm font-semibold tracking-wide transition-all duration-300 tech-shadow flex items-center gap-2 group">
+                    <span>Cotizar Ahora</span>
+                    <span class="material-symbols-outlined text-sm transition-transform duration-300 group-hover:translate-x-1">arrow_forward</span>
+                </a>
+            </div>
+
+            <!-- Mobile Hamburger Button -->
+            <button id="mobile-menu-btn" class="md:hidden p-2 rounded-lg text-on-surface hover:bg-surface-container transition-colors" aria-label="Abrir Menú">
+                <span class="material-symbols-outlined text-2xl">menu</span>
+            </button>
+        </div>
+
+        <!-- Mobile Dropdown Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-surface-container-lowest border-b border-surface-container-high px-6 py-5 shadow-xl transition-all">
+            <div class="flex flex-col gap-4">
+                <a href="#servicios" class="font-medium text-base text-secondary hover:text-primary transition-colors mobile-link">Servicios</a>
+                <a href="#experiencia" class="font-medium text-base text-secondary hover:text-primary transition-colors mobile-link">Tecnología</a>
+                <a href="#soluciones" class="font-medium text-base text-secondary hover:text-primary transition-colors mobile-link">Soluciones</a>
+                <a href="#industrias" class="font-medium text-base text-secondary hover:text-primary transition-colors mobile-link">Industrias</a>
+                <a href="#exito" class="font-medium text-base text-secondary hover:text-primary transition-colors mobile-link">Casos de Éxito</a>
+                <a href="#contacto" class="btn-shimmer bg-primary text-white text-center py-3 rounded-lg font-semibold text-sm mt-2 mobile-link">
+                    Solicitar Cotización Inmediata
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 2. Hero Section (Rediseñado según referencia del cliente) -->
+    <header class="relative min-h-[90vh] flex items-center pt-28 pb-20 bg-[#0c0d10] text-white overflow-hidden">
+        <!-- Background Layer: edificios.webp con transparencia detrás del texto -->
+        <div class="absolute inset-0 z-0">
+            <img src="fotos/edificios.webp" 
+                 alt="Edificios e Infraestructura Corporativa" 
+                 class="w-full h-full object-cover object-center opacity-25 mix-blend-luminosity scale-105 transition-transform duration-1000 ease-out" id="hero-bg-img"/>
+            <div class="absolute inset-0 bg-gradient-to-r from-[#0c0d10] via-[#0c0d10]/90 to-[#0c0d10]/60"></div>
+            <div class="absolute inset-0 bg-gradient-to-t from-[#0c0d10] via-transparent to-[#0c0d10]/80"></div>
+        </div>
+
+        <!-- Right Side Camera (Como en la imagen de referencia del cliente) -->
+        <div class="absolute right-0 top-0 bottom-0 w-full lg:w-1/2 pointer-events-none z-[1] flex items-center justify-end overflow-hidden opacity-50 lg:opacity-75">
+            <div class="relative w-full h-full flex items-center justify-end">
+                <img src="fotos/Camara domo.jpg" 
+                     alt="Cámara de Seguridad Domo" 
+                     class="h-full w-auto max-w-none object-cover object-left filter brightness-70 contrast-125 mix-blend-screen scale-110 lg:scale-125 translate-x-10 lg:translate-x-0"/>
+                <div class="absolute inset-0 bg-gradient-to-r from-[#0c0d10] via-[#0c0d10]/50 to-transparent"></div>
+                <div class="absolute inset-0 bg-gradient-to-t from-[#0c0d10] via-transparent to-[#0c0d10]/60"></div>
+            </div>
+        </div>
+
+        <div class="relative z-10 max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop w-full">
+            <div class="max-w-3xl space-y-6">
+                <!-- Red Badge: LÍDERES EN SEGURIDAD -->
+                <div class="inline-block reveal">
+                    <span class="bg-[#b5000b] text-white text-xs font-headline font-bold uppercase tracking-wider px-3.5 py-1.5 rounded-sm shadow-md">
+                        LÍDERES EN SEGURIDAD
+                    </span>
+                </div>
+
+                <!-- Main H1 matching reference image exactly -->
+                <h1 class="font-headline text-3xl sm:text-5xl lg:text-[3.25rem] font-extrabold tracking-tight leading-[1.15] text-white reveal delay-100">
+                    Seguridad Inteligente para Empresas en Chile: Tecnología IA y Guardias OS10
+                </h1>
+
+                <!-- Paragraph description matching reference image -->
+                <p class="text-base sm:text-lg text-white/90 max-w-2xl leading-relaxed font-normal reveal delay-200">
+                    Protección 24/7 con monitoreo avanzado y personal certificado para su continuidad operativa.
+                </p>
+
+                <!-- CTA Group matching reference image -->
+                <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-2 reveal delay-300">
+                    <a href="#contacto" class="btn-shimmer bg-[#b5000b] hover:bg-[#930007] text-white px-7 py-3.5 rounded-md font-headline font-bold text-sm tracking-wide transition-all duration-300 tech-shadow flex items-center justify-center">
+                        Solicitar Evaluación Gratuita
+                    </a>
+                    <a href="#servicios" class="bg-[#e8e8e8] hover:bg-white text-[#1a1c1c] px-7 py-3.5 rounded-md font-headline font-semibold text-sm transition-all duration-300 flex items-center justify-center">
+                        Ver Servicios
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- 3. Trust Bar / Client Logos -->
+    <section class="bg-surface-container-lowest py-8 border-b border-surface-container-high">
+        <div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+            <p class="text-center font-headline text-xs font-bold uppercase tracking-widest text-secondary mb-6">
+                Instituciones y Corporaciones que confían en nuestro estándar
+            </p>
+            <div class="flex flex-wrap justify-center items-center gap-8 md:gap-14 opacity-70 grayscale hover:grayscale-0 transition-all duration-500">
+                <div class="flex items-center gap-2 text-on-surface font-headline font-semibold text-sm">
+                    <span class="material-symbols-outlined text-primary text-2xl">apartment</span>
+                    <span>Parques Industriales</span>
+                </div>
+                <div class="flex items-center gap-2 text-on-surface font-headline font-semibold text-sm">
+                    <span class="material-symbols-outlined text-primary text-2xl">account_balance</span>
+                    <span>Entidades Financieras</span>
+                </div>
+                <div class="flex items-center gap-2 text-on-surface font-headline font-semibold text-sm">
+                    <span class="material-symbols-outlined text-primary text-2xl">factory</span>
+                    <span>Minería &amp; Energía</span>
+                </div>
+                <div class="flex items-center gap-2 text-on-surface font-headline font-semibold text-sm">
+                    <span class="material-symbols-outlined text-primary text-2xl">domain</span>
+                    <span>Edificios Corporativos</span>
+                </div>
+                <div class="flex items-center gap-2 bg-primary/10 border border-primary/20 px-3.5 py-1.5 rounded-lg text-primary font-headline font-bold text-xs">
+                    <span class="material-symbols-outlined text-base">verified_user</span>
+                    <span>100% Guardias OS10</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. "Su Socio Estratégico" / Experiencia & Contadores Dinámicos -->
+    <section id="experiencia" class="py-section-padding bg-surface overflow-hidden">
+        <div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Left Details & Animated Counter -->
+                <div class="lg:col-span-6 space-y-6">
+                    <div class="flex items-center justify-between border-b border-surface-container-high pb-4">
+                        <span class="font-headline text-xs font-bold uppercase tracking-wider text-primary">Excelencia &amp; Estándar Suizo</span>
+                    </div>
+
+                    <h2 class="font-headline text-3xl sm:text-4xl font-extrabold text-on-secondary-fixed leading-tight reveal">
+                        Su Socio Estratégico en Soluciones Avanzadas de Seguridad
+                    </h2>
+
+                    <p class="text-base text-secondary leading-relaxed reveal delay-100">
+                        Protegemos infraestructuras críticas y corporativas en todo Chile, diseñando esquemas de seguridad a la medida que integran analítica inteligente y guardias rigurosamente certificados para garantizar cero interrupciones en su negocio.
+                    </p>
+
+                    <div class="grid grid-cols-2 gap-4 pt-2 reveal delay-200">
+                        <div class="p-4 rounded-xl bg-surface-container-lowest border border-surface-container-high tech-shadow">
+                            <div class="font-headline text-2xl font-black text-on-secondary-fixed mb-1 flex items-baseline">
+                                <span class="counter-value" data-target="99">0</span><span>.8%</span>
+                            </div>
+                            <p class="text-xs text-secondary font-medium">Efectividad preventiva de siniestros</p>
+                        </div>
+                        <div class="p-4 rounded-xl bg-surface-container-lowest border border-surface-container-high tech-shadow">
+                            <div class="font-headline text-2xl font-black text-primary mb-1 flex items-baseline">
+                                <span class="counter-value" data-target="24">0</span><span>/7</span>
+                            </div>
+                            <p class="text-xs text-secondary font-medium">Respuesta táctica y monitoreo continuo</p>
+                        </div>
+                    </div>
+
+                    <div class="pt-2 reveal delay-300">
+                        <a href="#contacto" class="inline-flex items-center gap-2 font-headline font-bold text-sm text-primary hover:text-[#930007] transition-colors group">
+                            <span>Conocer nuestro protocolo de seguridad</span>
+                            <span class="material-symbols-outlined text-sm transition-transform duration-300 group-hover:translate-x-1.5">arrow_forward</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Right Images Composition -->
+                <div class="lg:col-span-6 grid grid-cols-2 gap-4 reveal-scale delay-200">
+                    <div class="space-y-4">
+                        <div class="rounded-3xl overflow-hidden tech-shadow bg-surface-container-high aspect-square group">
+                            <img src="fotos/edificios.webp" 
+                                 alt="Infraestructura corporativa protegida por Swiss Security" 
+                                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"/>
+                        </div>
+                        <div class="p-5 rounded-3xl bg-on-secondary-fixed text-white tech-shadow space-y-2">
+                            <span class="material-symbols-outlined text-primary text-2xl">verified_user</span>
+                            <h4 class="font-headline font-bold text-sm">Protocolo OS10</h4>
+                            <p class="text-xs text-white/70">Personal con antecedentes chequeados y adiestramiento táctico continuo.</p>
+                        </div>
+                    </div>
+
+                    <div class="space-y-4 pt-8">
+                        <div class="p-5 rounded-3xl bg-primary text-white tech-shadow space-y-2">
+                            <span class="material-symbols-outlined text-white text-2xl">psychology</span>
+                            <h4 class="font-headline font-bold text-sm">Algoritmos de IA</h4>
+                            <p class="text-xs text-white/90">Filtro inteligente que elimina el 95% de falsas alarmas.</p>
+                        </div>
+                        <div class="rounded-3xl overflow-hidden tech-shadow bg-surface-container-high aspect-square group">
+                            <img src="fotos/hombre central monitoreo.jpg" 
+                                 alt="Centro de monitoreo táctico y analítica de video Swiss Security" 
+                                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"/>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. Banner Panorámico: Acceso Remoto y Monitoreo Móvil -->
+    <section class="py-12 bg-surface">
+        <div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+            <div class="relative rounded-3xl overflow-hidden tech-shadow min-h-[360px] md:min-h-[420px] flex items-end p-8 md:p-12 group">
+                <!-- Panoramic Image Layer -->
+                <img src="fotos/hombre central monitoreo.jpg" 
+                     alt="Centro de Control y Monitoreo Remoto Swiss Security" 
+                     class="absolute inset-0 w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-1000 ease-out"/>
+                
+                <!-- Dark Gradient Overlay -->
+                <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-black/20"></div>
+
+                <!-- Floating Glassmorphic Support Badge -->
+                <div class="absolute top-6 left-6 md:top-8 md:left-8 bg-black/60 backdrop-blur-md border border-white/20 text-white px-4 py-2 rounded-full text-xs font-semibold flex items-center gap-2 shadow-lg">
+                    <span class="material-symbols-outlined text-primary text-base">headset_mic</span>
+                    <span>Soporte Centralizado 24/7 en Línea</span>
+                </div>
+
+                <!-- Text Content at bottom left -->
+                <div class="relative z-10 max-w-xl text-white space-y-3">
+                    <span class="text-xs uppercase font-headline font-bold tracking-widest text-primary">Plataforma Swiss Connect</span>
+                    <h3 class="font-headline text-2xl sm:text-3xl md:text-4xl font-extrabold text-white leading-tight">
+                        Acceso Remoto y Monitoreo Móvil en Tiempo Real
+                    </h3>
+                    <p class="text-sm text-white/80 leading-relaxed">
+                        Visualice el estado de sus dependencias, reciba alertas instantáneas con captura de IA y audite las rondas de guardias directamente desde su dispositivo móvil o PC corporativa.
+                    </p>
+                    <div class="pt-2">
+                        <a href="#contacto" class="btn-shimmer inline-flex items-center gap-2 bg-primary hover:bg-[#C20510] text-white px-6 py-3 rounded-xl font-headline font-bold text-xs tracking-wider uppercase transition-all duration-300">
+                            <span>Solicitar Demostración de Software</span>
+                            <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. Carrusel de Soluciones Especializadas -->
+    <section id="soluciones" class="py-section-padding bg-surface-container-lowest border-y border-surface-container-high overflow-hidden">
+        <div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+            
+            <!-- Section Header with Navigation Controls -->
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+                <div>
+                    <span class="font-headline text-xs font-bold uppercase tracking-wider text-primary block mb-2">Nuestra Especialidad Principal</span>
+                    <h2 class="font-headline text-3xl sm:text-4xl font-extrabold text-on-secondary-fixed">
+                        Soluciones Especializadas de Seguridad
+                    </h2>
+                </div>
+                <!-- Interactive Prev/Next Controls -->
+                <div class="flex items-center gap-3">
+                    <button id="capsule-prev" class="w-12 h-12 rounded-full border border-surface-container-high bg-surface hover:bg-on-secondary-fixed hover:text-white transition-all flex items-center justify-center text-on-surface shadow-sm active:scale-95" aria-label="Anterior">
+                        <span class="material-symbols-outlined">chevron_left</span>
+                    </button>
+                    <button id="capsule-next" class="w-12 h-12 rounded-full border border-surface-container-high bg-surface hover:bg-on-secondary-fixed hover:text-white transition-all flex items-center justify-center text-on-surface shadow-sm active:scale-95" aria-label="Siguiente">
+                        <span class="material-symbols-outlined">chevron_right</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Capsule Grid / Carousel Container -->
+            <div id="capsule-carousel" class="flex gap-6 overflow-x-auto no-scrollbar scroll-smooth pb-6 pt-2">
+                
+                <!-- Capsule Card 1: Seguridad Corporativa -->
+                <div class="capsule-card flex-shrink-0 w-72 sm:w-80 rounded-[48px] border-2 border-surface-container-high bg-surface p-6 flex flex-col items-center text-center group cursor-pointer">
+                    <!-- Circular Image Wrapper -->
+                    <div class="w-48 h-48 rounded-full overflow-hidden bg-white mb-6 p-2 border border-surface-container-high shadow-inner flex items-center justify-center">
+                        <img src="fotos/Camara domo.jpg" 
+                             alt="Cámaras y Monitoreo IA Swiss Security" 
+                             class="capsule-img w-full h-full object-cover rounded-full"/>
+                    </div>
+                    <span class="text-xs uppercase font-headline font-bold tracking-widest text-primary mb-2">01 / Tecnología</span>
+                    <h3 class="font-headline font-bold text-xl text-on-secondary-fixed mb-3">Cámaras y Monitoreo IA</h3>
+                    <p class="text-xs text-secondary leading-relaxed mb-6">
+                        Detección proactiva de intrusos, reconocimiento de patentes vehiculares y análisis perimetral 24/7 sin puntos ciegos.
+                    </p>
+                    <a href="#contacto" class="mt-auto px-5 py-2.5 rounded-full text-xs font-headline font-bold border border-primary text-primary group-hover:bg-primary group-hover:text-white transition-all duration-300">
+                        Cotizar Solución
+                    </a>
+                </div>
+
+                <!-- Capsule Card 2: Guardias Certificados OS10 -->
+                <div class="capsule-card flex-shrink-0 w-72 sm:w-80 rounded-[48px] border-2 border-surface-container-high bg-surface p-6 flex flex-col items-center text-center group cursor-pointer">
+                    <!-- Circular Image Wrapper -->
+                    <div class="w-48 h-48 rounded-full overflow-hidden bg-white mb-6 p-2 border border-surface-container-high shadow-inner flex items-center justify-center">
+                        <img src="fotos/hombre central monitoreo transparente.webp" 
+                             alt="Guardias Certificados OS10 y Central de Monitoreo" 
+                             class="capsule-img w-full h-full object-cover rounded-full"/>
+                    </div>
+                    <span class="text-xs uppercase font-headline font-bold tracking-widest text-primary mb-2">02 / Seguridad Física</span>
+                    <h3 class="font-headline font-bold text-xl text-on-secondary-fixed mb-3">Guardias OS10</h3>
+                    <p class="text-xs text-secondary leading-relaxed mb-6">
+                        Personal uniformado rigurosamente seleccionado con acreditación vigente de Carabineros de Chile para control de acceso y rondas.
+                    </p>
+                    <a href="#contacto" class="mt-auto px-5 py-2.5 rounded-full text-xs font-headline font-bold border border-primary text-primary group-hover:bg-primary group-hover:text-white transition-all duration-300">
+                        Cotizar Solución
+                    </a>
+                </div>
+
+                <!-- Capsule Card 3: Industrial & Faenas -->
+                <div class="capsule-card flex-shrink-0 w-72 sm:w-80 rounded-[48px] border-2 border-surface-container-high bg-surface p-6 flex flex-col items-center text-center group cursor-pointer">
+                    <!-- Circular Image Wrapper -->
+                    <div class="w-48 h-48 rounded-full overflow-hidden bg-white mb-6 p-2 border border-surface-container-high shadow-inner flex items-center justify-center">
+                        <img src="fotos/edificios.webp" 
+                             alt="Seguridad para Minería, Logística y Edificios Corporativos" 
+                             class="capsule-img w-full h-full object-cover rounded-full"/>
+                    </div>
+                    <span class="text-xs uppercase font-headline font-bold tracking-widest text-primary mb-2">03 / Gran Escala</span>
+                    <h3 class="font-headline font-bold text-xl text-on-secondary-fixed mb-3">Minería &amp; Logística</h3>
+                    <p class="text-xs text-secondary leading-relaxed mb-6">
+                        Vigilancia de bodegas de alto valor, faenas remotas con torres solares autónomas de televigilancia satelital.
+                    </p>
+                    <a href="#contacto" class="mt-auto px-5 py-2.5 rounded-full text-xs font-headline font-bold border border-primary text-primary group-hover:bg-primary group-hover:text-white transition-all duration-300">
+                        Cotizar Solución
+                    </a>
+                </div>
+
+                <!-- Capsule Card 4: Facility Services & TI -->
+                <div class="capsule-card flex-shrink-0 w-72 sm:w-80 rounded-[48px] border-2 border-surface-container-high bg-surface p-6 flex flex-col items-center text-center group cursor-pointer">
+                    <!-- Circular Image Wrapper -->
+                    <div class="w-48 h-48 rounded-full overflow-hidden bg-white mb-6 p-2 border border-surface-container-high shadow-inner flex items-center justify-center">
+                        <img src="fotos/hombre central monitoreo.jpg" 
+                             alt="Servicios de Infraestructura y Redes TI" 
+                             class="capsule-img w-full h-full object-cover rounded-full"/>
+                    </div>
+                    <span class="text-xs uppercase font-headline font-bold tracking-widest text-primary mb-2">04 / Integración</span>
+                    <h3 class="font-headline font-bold text-xl text-on-secondary-fixed mb-3">Infraestructura &amp; Redes TI</h3>
+                    <p class="text-xs text-secondary leading-relaxed mb-6">
+                        Mantenimiento electromecánico, cableado estructurado, torniquetes biométricos e infraestructura tecnológica para edificios.
+                    </p>
+                    <a href="#contacto" class="mt-auto px-5 py-2.5 rounded-full text-xs font-headline font-bold border border-primary text-primary group-hover:bg-primary group-hover:text-white transition-all duration-300">
+                        Cotizar Solución
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. Industries Grid Section -->
+    <section id="industrias" class="py-section-padding bg-on-secondary-fixed text-white">
+        <div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop text-center">
+            <span class="text-xs uppercase font-headline font-bold tracking-widest text-primary mb-3 block">Cobertura Nacional</span>
+            <h2 class="font-headline text-3xl sm:text-4xl font-extrabold mb-12">Estamos Presentes en Sectores Clave</h2>
+            
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-6">
+                <div class="p-6 rounded-2xl bg-white/5 border border-white/10 hover:border-primary/50 transition-all duration-300 hover:scale-105 flex flex-col items-center">
+                    <span class="material-symbols-outlined text-primary text-4xl mb-3">storefront</span>
+                    <span class="font-headline font-semibold text-sm">Retail &amp; Centros Comerciales</span>
+                </div>
+                <div class="p-6 rounded-2xl bg-white/5 border border-white/10 hover:border-primary/50 transition-all duration-300 hover:scale-105 flex flex-col items-center">
+                    <span class="material-symbols-outlined text-primary text-4xl mb-3">domain</span>
+                    <span class="font-headline font-semibold text-sm">Edificios Corporativos</span>
+                </div>
+                <div class="p-6 rounded-2xl bg-white/5 border border-white/10 hover:border-primary/50 transition-all duration-300 hover:scale-105 flex flex-col items-center">
+                    <span class="material-symbols-outlined text-primary text-4xl mb-3">settings</span>
+                    <span class="font-headline font-semibold text-sm">Minería &amp; Energía</span>
+                </div>
+                <div class="p-6 rounded-2xl bg-white/5 border border-white/10 hover:border-primary/50 transition-all duration-300 hover:scale-105 flex flex-col items-center">
+                    <span class="material-symbols-outlined text-primary text-4xl mb-3">engineering</span>
+                    <span class="font-headline font-semibold text-sm">Construcción &amp; Obras</span>
+                </div>
+                <div class="p-6 rounded-2xl bg-white/5 border border-white/10 hover:border-primary/50 transition-all duration-300 hover:scale-105 flex flex-col items-center">
+                    <span class="material-symbols-outlined text-primary text-4xl mb-3">school</span>
+                    <span class="font-headline font-semibold text-sm">Instituciones Educacionales</span>
+                </div>
+                <div class="p-6 rounded-2xl bg-white/5 border border-white/10 hover:border-primary/50 transition-all duration-300 hover:scale-105 flex flex-col items-center">
+                    <span class="material-symbols-outlined text-primary text-4xl mb-3">home_work</span>
+                    <span class="font-headline font-semibold text-sm">Condominios Exclusivos</span>
+                </div>
+                <div class="p-6 rounded-2xl bg-white/5 border border-white/10 hover:border-primary/50 transition-all duration-300 hover:scale-105 flex flex-col items-center">
+                    <span class="material-symbols-outlined text-primary text-4xl mb-3">account_balance</span>
+                    <span class="font-headline font-semibold text-sm">Banca &amp; Custodia</span>
+                </div>
+                <div class="p-6 rounded-2xl bg-white/5 border border-white/10 hover:border-primary/50 transition-all duration-300 hover:scale-105 flex flex-col items-center">
+                    <span class="material-symbols-outlined text-primary text-4xl mb-3">flight_takeoff</span>
+                    <span class="font-headline font-semibold text-sm">Centros de Distribución</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 8. Testimonios / Casos de Éxito de Clientes -->
+    <section id="exito" class="py-section-padding bg-surface">
+        <div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <span class="text-xs uppercase font-headline font-bold tracking-widest text-primary mb-2 block">Casos de Éxito de Nuestros Clientes</span>
+                <h2 class="font-headline text-3xl sm:text-4xl font-extrabold text-on-secondary-fixed">
+                    Su Seguridad, Nuestra Máxima Prioridad
+                </h2>
+                <p class="text-sm text-secondary mt-3">Empresas líderes confían en Swiss Security para blindar su operación diaria.</p>
+            </div>
+
+            <!-- Grid de testimonios con tarjeta central oscura invertida -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch">
+                
+                <!-- Testimonio 1 -->
+                <div class="p-8 rounded-3xl bg-surface-container-lowest border border-surface-container-high tech-shadow tech-shadow-hover flex flex-col justify-between reveal">
+                    <div class="space-y-4">
+                        <div class="flex text-amber-400">
+                            <span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">star</span>
+                            <span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">star</span>
+                            <span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">star</span>
+                            <span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">star</span>
+                            <span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">star</span>
+                        </div>
+                        <p class="text-sm text-secondary italic leading-relaxed">
+                            "Desde que Swiss Security tomó el control perimetral de nuestro centro de bodegas en Quilicura, las vulnerabilidades se redujeron a cero. La analítica por IA es inmediata."
+                        </p>
+                    </div>
+                    <div class="flex items-center gap-3 pt-6 border-t border-surface-container mt-6">
+                        <div class="w-10 h-10 rounded-full bg-primary/10 text-primary font-headline font-bold flex items-center justify-center text-xs">
+                            CR
+                        </div>
+                        <div>
+                            <p class="font-headline font-bold text-xs text-on-surface">Carlos Rojas</p>
+                            <p class="text-[11px] text-secondary">Gerente de Logística, Santiago</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonio 2 (Tarjeta Central Destacada Oscura) -->
+                <div class="p-8 rounded-3xl bg-[#121316] text-white tech-shadow border-2 border-primary/40 transform md:-translate-y-2 flex flex-col justify-between shadow-2xl reveal delay-100">
+                    <div class="space-y-4">
+                        <div class="flex text-amber-400">
+                            <span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">star</span>
+                            <span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">star</span>
+                            <span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">star</span>
+                            <span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">star</span>
+                            <span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">star</span>
+                        </div>
+                        <p class="text-sm text-white/90 italic leading-relaxed font-normal">
+                            "El equipo técnico instaló nuestro sistema de cámaras de seguridad de manera impecable. Nos sentimos completamente respaldados las 24 horas y los guardias certificados OS10 son sumamente profesionales y rigurosos. Totalmente recomendados."
+                        </p>
+                    </div>
+                    <div class="flex items-center gap-3 pt-6 border-t border-white/10 mt-6">
+                        <div class="w-10 h-10 rounded-full bg-primary text-white font-headline font-bold flex items-center justify-center text-xs">
+                            JM
+                        </div>
+                        <div>
+                            <p class="font-headline font-bold text-xs text-white">Jordan M.</p>
+                            <p class="text-[11px] text-white/60">Director de Operaciones, Las Condes</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonio 3 -->
+                <div class="p-8 rounded-3xl bg-surface-container-lowest border border-surface-container-high tech-shadow tech-shadow-hover flex flex-col justify-between reveal delay-200">
+                    <div class="space-y-4">
+                        <div class="flex text-amber-400">
+                            <span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">star</span>
+                            <span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">star</span>
+                            <span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">star</span>
+                            <span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">star</span>
+                            <span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">star</span>
+                        </div>
+                        <p class="text-sm text-secondary italic leading-relaxed">
+                            "La presentación formal de los guardias, el libro digital de novedades y el reporte mensual de accesos le dan un estándar inigualable a nuestro edificio corporativo."
+                        </p>
+                    </div>
+                    <div class="flex items-center gap-3 pt-6 border-t border-surface-container mt-6">
+                        <div class="w-10 h-10 rounded-full bg-primary/10 text-primary font-headline font-bold flex items-center justify-center text-xs">
+                            ML
+                        </div>
+                        <div>
+                            <p class="font-headline font-bold text-xs text-on-surface">María Luisa Soto</p>
+                            <p class="text-[11px] text-secondary">Administración Corporativa, Vitacura</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 9. Banner Pre-Footer de Alto Impacto -->
+    <section class="py-12 bg-surface">
+        <div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+            <div class="relative rounded-3xl overflow-hidden bg-gradient-to-r from-[#191c20] via-[#2c2e33] to-[#121316] text-white p-8 sm:p-12 md:p-16 tech-shadow flex flex-col md:flex-row items-center justify-between gap-8 group">
+                
+                <!-- Background Glow -->
+                <div class="absolute -right-20 -bottom-20 w-96 h-96 bg-primary/20 rounded-full blur-3xl pointer-events-none"></div>
+
+                <div class="space-y-4 max-w-xl z-10">
+                    <div class="flex items-center gap-3">
+                        <img src="fotos/logo_cropped.png" alt="Swiss Security Logo" class="h-8 w-auto object-contain drop-shadow" />
+                        <span class="text-xs uppercase font-headline font-bold tracking-widest text-primary-container bg-white/10 px-3 py-1 rounded-full border border-white/15">Diagnóstico en Terreno Sin Costo</span>
+                    </div>
+                    <h3 class="font-headline text-3xl sm:text-4xl md:text-5xl font-extrabold leading-tight text-white">
+                        ¿Listo para Fortalecer la Seguridad de su Empresa?
+                    </h3>
+                    <p class="text-sm sm:text-base text-white/80 leading-relaxed">
+                        Nuestros expertos en seguridad privada realizarán un levantamiento exhaustivo de sus instalaciones y propondrán un esquema blindado en menos de 24 horas.
+                    </p>
+                </div>
+
+                <div class="z-10 flex-shrink-0">
+                    <a href="#contacto" class="btn-shimmer bg-primary hover:bg-[#C20510] text-white px-8 py-4 rounded-xl font-headline font-bold text-sm tracking-wide transition-all duration-300 tech-shadow flex items-center gap-3 group">
+                        <span>Solicitar Cotización Inmediata</span>
+                        <span class="material-symbols-outlined text-lg transition-transform duration-300 group-hover:translate-x-1.5">arrow_forward</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 10. Contact / Lead Magnet Form Section -->
+    <section id="contacto" class="py-section-padding bg-surface-container-lowest border-t border-surface-container-high">
+        <div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Form Column -->
+                <div class="lg:col-span-7 space-y-6">
+                    <span class="text-xs uppercase font-headline font-bold tracking-widest text-primary block">Atención Personalizada</span>
+                    <h2 class="font-headline text-3xl sm:text-4xl font-extrabold text-on-secondary-fixed">
+                        ¡Estemos en Contacto!
+                    </h2>
+                    <p class="text-sm text-secondary">
+                        Complete el formulario y un asesor de seguridad se comunicará con usted de manera prioritaria.
+                    </p>
+
+                    <form id="contact-form" class="space-y-4 pt-2">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-xs font-headline font-bold text-on-surface mb-1">Nombre Completo *</label>
+                                <input type="text" required placeholder="Ej: Roberto González" class="w-full px-4 py-3 rounded-xl border border-surface-container-high bg-surface text-sm text-on-surface focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-colors"/>
+                            </div>
+                            <div>
+                                <label class="block text-xs font-headline font-bold text-on-surface mb-1">Correo Electrónico *</label>
+                                <input type="email" required placeholder="correo@empresa.cl" class="w-full px-4 py-3 rounded-xl border border-surface-container-high bg-surface text-sm text-on-surface focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-colors"/>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-xs font-headline font-bold text-on-surface mb-1">Teléfono Móvil *</label>
+                                <input type="tel" required placeholder="+56 9 1234 5678" class="w-full px-4 py-3 rounded-xl border border-surface-container-high bg-surface text-sm text-on-surface focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-colors"/>
+                            </div>
+                            <div>
+                                <label class="block text-xs font-headline font-bold text-on-surface mb-1">Servicio de Interés</label>
+                                <select class="w-full px-4 py-3 rounded-xl border border-surface-container-high bg-surface text-sm text-on-surface focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-colors">
+                                    <option>Guardias de Seguridad OS10</option>
+                                    <option>Cámaras y Monitoreo con IA</option>
+                                    <option>Seguridad Industrial &amp; Minería</option>
+                                    <option>Servicios de Infraestructura &amp; TI</option>
+                                    <option>Evaluación Integral de Riesgos</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-headline font-bold text-on-surface mb-1">Detalle del requerimiento o mensaje</label>
+                            <textarea rows="4" placeholder="Describa brevemente la instalación, ubicación y cantidad de turnos o requerimientos..." class="w-full px-4 py-3 rounded-xl border border-surface-container-high bg-surface text-sm text-on-surface focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-colors resize-none"></textarea>
+                        </div>
+
+                        <button type="submit" class="btn-shimmer bg-primary hover:bg-[#C20510] text-white px-8 py-3.5 rounded-xl font-headline font-bold text-sm tracking-wide transition-all duration-300 tech-shadow flex items-center justify-center gap-2 w-full sm:w-auto">
+                            <span>Enviar Solicitud</span>
+                            <span class="material-symbols-outlined text-sm">send</span>
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Info & Image Column -->
+                <div class="lg:col-span-5 space-y-6">
+                    <div class="p-6 rounded-2xl bg-surface border border-surface-container-high space-y-4">
+                        <div class="flex items-start gap-4">
+                            <span class="material-symbols-outlined text-primary text-2xl mt-0.5">location_on</span>
+                            <div>
+                                <h4 class="font-headline font-bold text-xs uppercase tracking-wider text-secondary">Oficinas Centrales</h4>
+                                <p class="text-sm font-medium text-on-surface">Av. Presidente Kennedy 5600, Piso 4, Vitacura, Región Metropolitana.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <span class="material-symbols-outlined text-primary text-2xl mt-0.5">mail</span>
+                            <div>
+                                <h4 class="font-headline font-bold text-xs uppercase tracking-wider text-secondary">Contacto Comercial</h4>
+                                <p class="text-sm font-medium text-on-surface">administracion@ssecurity.cl</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <span class="material-symbols-outlined text-primary text-2xl mt-0.5">call</span>
+                            <div>
+                                <h4 class="font-headline font-bold text-xs uppercase tracking-wider text-secondary">Central Operativa 24/7</h4>
+                                <p class="text-sm font-medium text-on-surface">+56 (2) 2890 0000</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="rounded-2xl overflow-hidden tech-shadow h-64 relative group">
+                        <img src="fotos/edificios.webp" 
+                             alt="Oficinas Corporativas Swiss Security - Vitacura" 
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"/>
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-black/30 to-transparent flex items-end p-6">
+                            <div>
+                                <span class="text-[11px] font-bold uppercase tracking-wider text-primary block mb-1">Presencia Corporativa</span>
+                                <p class="text-white text-xs font-medium">Asesoría técnica y levantamiento de seguridad en terreno para empresas e industrias.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 11. Footer with Massive Typography Watermark ("securomo" style from Video 00:13 - 00:14) -->
+    <footer class="bg-surface-container-lowest pt-16 pb-8 border-t border-surface-container-high overflow-hidden">
+        <div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+            
+            <!-- Giant Brand Watermark with Official Logo -->
+            <div class="border-b border-surface-container-high pb-8 mb-12 flex flex-col md:flex-row items-center justify-between gap-6 select-none">
+                <span class="brand-watermark block text-on-secondary-fixed tracking-tighter">swiss security</span>
+                <div class="flex flex-col items-center md:items-end gap-2">
+                    <img src="fotos/logo_dark.png" alt="Swiss Security - Logo Oficial" class="h-12 md:h-14 w-auto object-contain opacity-90 hover:opacity-100 transition-opacity" />
+                    <span class="text-[10px] uppercase font-semibold tracking-widest text-primary">Seguridad Privada &amp; Soluciones IA</span>
+                </div>
+            </div>
+
+            <!-- Footer Columns -->
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-8 mb-12">
+                <!-- Newsletter / Stay Secure -->
+                <div class="md:col-span-5 space-y-4">
+                    <h4 class="font-headline font-bold text-base text-on-secondary-fixed">Manténgase Informado y Seguro</h4>
+                    <p class="text-xs text-secondary leading-relaxed max-w-sm">
+                        Suscríbase a nuestro informe mensual sobre tendencias de ciberseguridad, prevención del delito y protocolos de control para empresas.
+                    </p>
+                    <div class="flex items-center max-w-sm">
+                        <input type="email" placeholder="Ingrese su email corporativo" class="w-full px-4 py-2.5 rounded-l-xl border border-surface-container-high text-xs text-on-surface focus:outline-none focus:border-primary"/>
+                        <button class="bg-primary text-white px-4 py-2.5 rounded-r-xl hover:bg-[#C20510] transition-colors flex items-center justify-center" aria-label="Suscribirse">
+                            <span class="material-symbols-outlined text-sm">send</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Fast Links -->
+                <div class="md:col-span-2 space-y-3">
+                    <h4 class="font-headline font-bold text-xs uppercase tracking-wider text-on-secondary-fixed">Navegación</h4>
+                    <ul class="space-y-2 text-xs text-secondary">
+                        <li><a href="#" class="hover-link hover:text-primary transition-colors">Inicio</a></li>
+                        <li><a href="#servicios" class="hover-link hover:text-primary transition-colors">Servicios</a></li>
+                        <li><a href="#experiencia" class="hover-link hover:text-primary transition-colors">Tecnología IA</a></li>
+                        <li><a href="#soluciones" class="hover-link hover:text-primary transition-colors">Soluciones</a></li>
+                        <li><a href="#exito" class="hover-link hover:text-primary transition-colors">Casos de Éxito</a></li>
+                    </ul>
+                </div>
+
+                <div class="md:col-span-3 space-y-3">
+                    <h4 class="font-headline font-bold text-xs uppercase tracking-wider text-on-secondary-fixed">Soluciones Principales</h4>
+                    <ul class="space-y-2 text-xs text-secondary">
+                        <li><a href="#soluciones" class="hover-link hover:text-primary transition-colors">Seguridad Física OS10</a></li>
+                        <li><a href="#soluciones" class="hover-link hover:text-primary transition-colors">Televigilancia &amp; IA 24/7</a></li>
+                        <li><a href="#soluciones" class="hover-link hover:text-primary transition-colors">Torres de Vigilancia Remota</a></li>
+                        <li><a href="#soluciones" class="hover-link hover:text-primary transition-colors">Servicios Integrales &amp; Mantenimiento</a></li>
+                    </ul>
+                </div>
+
+                <div class="md:col-span-2 space-y-3">
+                    <h4 class="font-headline font-bold text-xs uppercase tracking-wider text-on-secondary-fixed">Acreditación</h4>
+                    <div class="space-y-2 text-xs text-secondary">
+                        <p class="flex items-center gap-1.5 font-semibold text-on-surface">
+                            <span class="material-symbols-outlined text-primary text-base">verified</span>
+                            <span>OS10 Carabineros</span>
+                        </p>
+                        <p>Resolución Exenta vigente para prestación de servicios de seguridad privada en todo Chile.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bottom Legal Bar -->
+            <div class="pt-8 border-t border-surface-container-high flex flex-col sm:flex-row justify-between items-center text-xs text-secondary gap-4">
+                <p>© 2024 Swiss Security Chile. Todos los derechos reservados.</p>
+                <div class="flex items-center gap-6">
+                    <a href="#" class="hover:text-primary transition-colors">Términos de Servicio</a>
+                    <a href="#" class="hover:text-primary transition-colors">Política de Privacidad</a>
+                    <a href="#" class="hover:text-primary transition-colors">Cumplimiento Legal</a>
+                </div>
+            </div>
+
+        </div>
+    </footer>
+
+    <!-- 12. Floating WhatsApp Action Button with Live Ripple Pulse -->
+    <a href="https://wa.me/56912345678?text=Hola,%20deseo%20cotizar%20servicios%20de%20seguridad%20con%20Swiss%20Security" 
+       target="_blank" 
+       rel="noopener noreferrer" 
+       class="fixed bottom-6 right-6 z-50 bg-[#25D366] text-white p-3.5 rounded-full shadow-2xl hover:scale-110 active:scale-95 transition-all duration-300 tech-shadow flex items-center justify-center group" 
+       aria-label="Contactar por WhatsApp">
+        <span class="absolute -top-10 right-0 bg-[#191c20] text-white text-[11px] font-headline font-semibold px-3 py-1 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap shadow-md pointer-events-none">
+            ¿Deseas cotizar? Chatea aquí
+        </span>
+        <svg fill="currentColor" height="28" viewBox="0 0 16 16" width="28" xmlns="http://www.w3.org/2000/svg">
+            <path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z"></path>
+        </svg>
+    </a>
+
+    <!-- 13. Vanilla Javascript for All Video-like Interactions and Scroll Triggers -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // 1. Intersection Observer con reactivación en scroll reverso
+            const revealElements = document.querySelectorAll('.reveal, .reveal-scale');
+            const observerOptions = {
+                threshold: 0.12,
+                rootMargin: '0px 0px -20px 0px'
+            };
+
+            const revealObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                    } else {
+                        // Se remueve la clase al salir del viewport para permitir que vuelva a animarse al scrollear hacia arriba o abajo
+                        entry.target.classList.remove('active');
+                    }
+                });
+            }, observerOptions);
+
+            revealElements.forEach(el => revealObserver.observe(el));
+
+            // 2. Contadores animados (se reinician y re-ejecutan al hacer scroll de vuelta)
+            const counterElements = document.querySelectorAll('.counter-value');
+            let isCounting = false;
+
+            const startCounters = () => {
+                if (isCounting) return;
+                isCounting = true;
+                counterElements.forEach(counter => {
+                    const target = parseInt(counter.getAttribute('data-target'), 10);
+                    const duration = 1600; // ms
+                    const startTime = performance.now();
+
+                    const updateCounter = (currentTime) => {
+                        const elapsed = currentTime - startTime;
+                        const progress = Math.min(elapsed / duration, 1);
+                        const easeProgress = 1 - Math.pow(1 - progress, 3);
+                        const currentVal = Math.floor(easeProgress * target);
+                        
+                        counter.textContent = currentVal;
+
+                        if (progress < 1) {
+                            requestAnimationFrame(updateCounter);
+                        } else {
+                            counter.textContent = target;
+                            isCounting = false;
+                        }
+                    };
+
+                    requestAnimationFrame(updateCounter);
+                });
+            };
+
+            const counterSection = document.getElementById('experiencia');
+            if (counterSection) {
+                const counterObserver = new IntersectionObserver((entries) => {
+                    if (entries[0].isIntersecting) {
+                        startCounters();
+                    } else {
+                        // Restablecer contadores para re-animación al scrollear
+                        isCounting = false;
+                        counterElements.forEach(counter => {
+                            counter.textContent = '0';
+                        });
+                    }
+                }, { threshold: 0.25 });
+                counterObserver.observe(counterSection);
+            }
+
+            // 3. Navbar scroll shrink & background intensification
+            const navbar = document.getElementById('navbar');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 40) {
+                    navbar.classList.add('py-2.5', 'shadow-md', 'bg-surface/95');
+                    navbar.classList.remove('py-4');
+                } else {
+                    navbar.classList.remove('py-2.5', 'shadow-md', 'bg-surface/95');
+                    navbar.classList.add('py-4');
+                }
+            });
+
+            // 4. Capsule Carousel Controls (Left/Right scroll as in video 00:07)
+            const carousel = document.getElementById('capsule-carousel');
+            const prevBtn = document.getElementById('capsule-prev');
+            const nextBtn = document.getElementById('capsule-next');
+
+            if (carousel && prevBtn && nextBtn) {
+                nextBtn.addEventListener('click', () => {
+                    carousel.scrollBy({ left: 340, behavior: 'smooth' });
+                });
+                prevBtn.addEventListener('click', () => {
+                    carousel.scrollBy({ left: -340, behavior: 'smooth' });
+                });
+            }
+
+            // 5. Mobile Navigation Menu Toggle
+            const mobileBtn = document.getElementById('mobile-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const mobileLinks = document.querySelectorAll('.mobile-link');
+
+            if (mobileBtn && mobileMenu) {
+                mobileBtn.addEventListener('click', () => {
+                    mobileMenu.classList.toggle('hidden');
+                });
+
+                mobileLinks.forEach(link => {
+                    link.addEventListener('click', () => {
+                        mobileMenu.classList.add('hidden');
+                    });
+                });
+            }
+
+            // 6. Contact Form Feedback Simulation
+            const contactForm = document.getElementById('contact-form');
+            if (contactForm) {
+                contactForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    const submitBtn = contactForm.querySelector('button[type="submit"]');
+                    const originalContent = submitBtn.innerHTML;
+                    
+                    submitBtn.disabled = true;
+                    submitBtn.innerHTML = `
+                        <span class="material-symbols-outlined text-sm animate-spin">refresh</span>
+                        <span>Enviando requerimiento...</span>
+                    `;
+
+                    setTimeout(() => {
+                        submitBtn.classList.remove('bg-primary', 'hover:bg-[#C20510]');
+                        submitBtn.classList.add('bg-emerald-600');
+                        submitBtn.innerHTML = `
+                            <span class="material-symbols-outlined text-sm">check_circle</span>
+                            <span>¡Solicitud enviada con éxito!</span>
+                        `;
+                        contactForm.reset();
+
+                        setTimeout(() => {
+                            submitBtn.disabled = false;
+                            submitBtn.classList.remove('bg-emerald-600');
+                            submitBtn.classList.add('bg-primary', 'hover:bg-[#C20510]');
+                            submitBtn.innerHTML = originalContent;
+                        }, 4000);
+                    }, 1200);
+                });
+            }
+        });
+    </script>
+</body>
+</html>
