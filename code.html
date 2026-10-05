@@ -47,13 +47,16 @@
                         "error": "#ba1a1a"
                     },
                     borderRadius: {
-                        "DEFAULT": "0.5rem",
-                        "md": "0.75rem",
-                        "lg": "1rem",
-                        "xl": "1.5rem",
-                        "2xl": "2rem",
-                        "capsule": "60px",
-                        "full": "9999px"
+                        "none": "0px",
+                        "DEFAULT": "0px",
+                        "sm": "0px",
+                        "md": "0px",
+                        "lg": "0px",
+                        "xl": "0px",
+                        "2xl": "0px",
+                        "3xl": "0px",
+                        "capsule": "0px",
+                        "full": "0px"
                     },
                     spacing: {
                         "container-max": "1280px",
@@ -72,6 +75,11 @@
     </script>
     
     <style>
+        /* Strict rectilinear geometry - Zero rounded corners */
+        *, *::before, *::after {
+            border-radius: 0 !important;
+        }
+
         :root {
             --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
             --ease-in-out-smooth: cubic-bezier(0.65, 0, 0.35, 1);
@@ -250,14 +258,14 @@
 
             <!-- Action CTA Button -->
             <div class="hidden sm:flex items-center gap-4">
-                <a href="#contacto" class="btn-shimmer bg-primary hover:bg-[#C20510] text-white px-6 py-2.5 rounded-lg text-sm font-semibold tracking-wide transition-all duration-300 tech-shadow flex items-center gap-2 group">
+                <a href="#contacto" class="btn-shimmer bg-primary hover:bg-[#C20510] text-white px-6 py-2.5 text-sm font-semibold tracking-wide transition-all duration-300 tech-shadow flex items-center gap-2 group">
                     <span>Cotizar Ahora</span>
                     <span class="material-symbols-outlined text-sm transition-transform duration-300 group-hover:translate-x-1">arrow_forward</span>
                 </a>
             </div>
 
             <!-- Mobile Hamburger Button -->
-            <button id="mobile-menu-btn" class="md:hidden p-2 rounded-lg text-on-surface hover:bg-surface-container transition-colors" aria-label="Abrir Menú">
+            <button id="mobile-menu-btn" class="md:hidden p-2 text-on-surface hover:bg-surface-container transition-colors" aria-label="Abrir Menú">
                 <span class="material-symbols-outlined text-2xl">menu</span>
             </button>
         </div>
@@ -270,7 +278,7 @@
                 <a href="#soluciones" class="font-medium text-base text-secondary hover:text-primary transition-colors mobile-link">Soluciones</a>
                 <a href="#industrias" class="font-medium text-base text-secondary hover:text-primary transition-colors mobile-link">Industrias</a>
                 <a href="#exito" class="font-medium text-base text-secondary hover:text-primary transition-colors mobile-link">Casos de Éxito</a>
-                <a href="#contacto" class="btn-shimmer bg-primary text-white text-center py-3 rounded-lg font-semibold text-sm mt-2 mobile-link">
+                <a href="#contacto" class="btn-shimmer bg-primary text-white text-center py-3 font-semibold text-sm mt-2 mobile-link">
                     Solicitar Cotización Inmediata
                 </a>
             </div>
@@ -303,7 +311,7 @@
             <div class="max-w-3xl space-y-6">
                 <!-- Red Badge: LÍDERES EN SEGURIDAD -->
                 <div class="inline-block reveal">
-                    <span class="bg-[#b5000b] text-white text-xs font-headline font-bold uppercase tracking-wider px-3.5 py-1.5 rounded-sm shadow-md">
+                    <span class="bg-[#b5000b] text-white text-xs font-headline font-bold uppercase tracking-wider px-3.5 py-1.5 shadow-md">
                         LÍDERES EN SEGURIDAD
                     </span>
                 </div>
@@ -320,10 +328,10 @@
 
                 <!-- CTA Group matching reference image -->
                 <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-2 reveal delay-300">
-                    <a href="#contacto" class="btn-shimmer bg-[#b5000b] hover:bg-[#930007] text-white px-7 py-3.5 rounded-md font-headline font-bold text-sm tracking-wide transition-all duration-300 tech-shadow flex items-center justify-center">
+                    <a href="#contacto" class="btn-shimmer bg-[#b5000b] hover:bg-[#930007] text-white px-7 py-3.5 font-headline font-bold text-sm tracking-wide transition-all duration-300 tech-shadow flex items-center justify-center">
                         Solicitar Evaluación Gratuita
                     </a>
-                    <a href="#servicios" class="bg-[#e8e8e8] hover:bg-white text-[#1a1c1c] px-7 py-3.5 rounded-md font-headline font-semibold text-sm transition-all duration-300 flex items-center justify-center">
+                    <a href="#servicios" class="bg-[#e8e8e8] hover:bg-white text-[#1a1c1c] px-7 py-3.5 font-headline font-semibold text-sm transition-all duration-300 flex items-center justify-center">
                         Ver Servicios
                     </a>
                 </div>
@@ -354,7 +362,7 @@
                     <span class="material-symbols-outlined text-primary text-2xl">domain</span>
                     <span>Edificios Corporativos</span>
                 </div>
-                <div class="flex items-center gap-2 bg-primary/10 border border-primary/20 px-3.5 py-1.5 rounded-lg text-primary font-headline font-bold text-xs">
+                <div class="flex items-center gap-2 bg-primary/10 border border-primary/20 px-3.5 py-1.5 text-primary font-headline font-bold text-xs">
                     <span class="material-symbols-outlined text-base">verified_user</span>
                     <span>100% Guardias OS10</span>
                 </div>
@@ -382,13 +390,13 @@
                     </p>
 
                     <div class="grid grid-cols-2 gap-4 pt-2 reveal delay-200">
-                        <div class="p-4 rounded-xl bg-surface-container-lowest border border-surface-container-high tech-shadow">
+                        <div class="p-4 bg-surface-container-lowest border border-surface-container-high tech-shadow">
                             <div class="font-headline text-2xl font-black text-on-secondary-fixed mb-1 flex items-baseline">
                                 <span class="counter-value" data-target="99">0</span><span>.8%</span>
                             </div>
                             <p class="text-xs text-secondary font-medium">Efectividad preventiva de siniestros</p>
                         </div>
-                        <div class="p-4 rounded-xl bg-surface-container-lowest border border-surface-container-high tech-shadow">
+                        <div class="p-4 bg-surface-container-lowest border border-surface-container-high tech-shadow">
                             <div class="font-headline text-2xl font-black text-primary mb-1 flex items-baseline">
                                 <span class="counter-value" data-target="24">0</span><span>/7</span>
                             </div>
@@ -407,12 +415,12 @@
                 <!-- Right Images Composition -->
                 <div class="lg:col-span-6 grid grid-cols-2 gap-4 reveal-scale delay-200">
                     <div class="space-y-4">
-                        <div class="rounded-3xl overflow-hidden tech-shadow bg-surface-container-high aspect-square group">
+                        <div class="overflow-hidden tech-shadow bg-surface-container-high aspect-square group">
                             <img src="fotos/edificios.webp" 
                                  alt="Infraestructura corporativa protegida por Swiss Security" 
                                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"/>
                         </div>
-                        <div class="p-5 rounded-3xl bg-on-secondary-fixed text-white tech-shadow space-y-2">
+                        <div class="p-5 bg-on-secondary-fixed text-white tech-shadow space-y-2">
                             <span class="material-symbols-outlined text-primary text-2xl">verified_user</span>
                             <h4 class="font-headline font-bold text-sm">Protocolo OS10</h4>
                             <p class="text-xs text-white/70">Personal con antecedentes chequeados y adiestramiento táctico continuo.</p>
@@ -420,12 +428,12 @@
                     </div>
 
                     <div class="space-y-4 pt-8">
-                        <div class="p-5 rounded-3xl bg-primary text-white tech-shadow space-y-2">
+                        <div class="p-5 bg-primary text-white tech-shadow space-y-2">
                             <span class="material-symbols-outlined text-white text-2xl">psychology</span>
                             <h4 class="font-headline font-bold text-sm">Algoritmos de IA</h4>
                             <p class="text-xs text-white/90">Filtro inteligente que elimina el 95% de falsas alarmas.</p>
                         </div>
-                        <div class="rounded-3xl overflow-hidden tech-shadow bg-surface-container-high aspect-square group">
+                        <div class="overflow-hidden tech-shadow bg-surface-container-high aspect-square group">
                             <img src="fotos/hombre central monitoreo.jpg" 
                                  alt="Centro de monitoreo táctico y analítica de video Swiss Security" 
                                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"/>
@@ -440,7 +448,7 @@
     <!-- 5. Banner Panorámico: Acceso Remoto y Monitoreo Móvil -->
     <section class="py-12 bg-surface">
         <div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
-            <div class="relative rounded-3xl overflow-hidden tech-shadow min-h-[360px] md:min-h-[420px] flex items-end p-8 md:p-12 group">
+            <div class="relative overflow-hidden tech-shadow min-h-[360px] md:min-h-[420px] flex items-end p-8 md:p-12 group">
                 <!-- Panoramic Image Layer -->
                 <img src="fotos/hombre central monitoreo.jpg" 
                      alt="Centro de Control y Monitoreo Remoto Swiss Security" 
@@ -450,7 +458,7 @@
                 <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-black/20"></div>
 
                 <!-- Floating Glassmorphic Support Badge -->
-                <div class="absolute top-6 left-6 md:top-8 md:left-8 bg-black/60 backdrop-blur-md border border-white/20 text-white px-4 py-2 rounded-full text-xs font-semibold flex items-center gap-2 shadow-lg">
+                <div class="absolute top-6 left-6 md:top-8 md:left-8 bg-black/60 backdrop-blur-md border border-white/20 text-white px-4 py-2 text-xs font-semibold flex items-center gap-2 shadow-lg">
                     <span class="material-symbols-outlined text-primary text-base">headset_mic</span>
                     <span>Soporte Centralizado 24/7 en Línea</span>
                 </div>
@@ -465,7 +473,7 @@
                         Visualice el estado de sus dependencias, reciba alertas instantáneas con captura de IA y audite las rondas de guardias directamente desde su dispositivo móvil o PC corporativa.
                     </p>
                     <div class="pt-2">
-                        <a href="#contacto" class="btn-shimmer inline-flex items-center gap-2 bg-primary hover:bg-[#C20510] text-white px-6 py-3 rounded-xl font-headline font-bold text-xs tracking-wider uppercase transition-all duration-300">
+                        <a href="#contacto" class="btn-shimmer inline-flex items-center gap-2 bg-primary hover:bg-[#C20510] text-white px-6 py-3 font-headline font-bold text-xs tracking-wider uppercase transition-all duration-300">
                             <span>Solicitar Demostración de Software</span>
                             <span class="material-symbols-outlined text-sm">arrow_forward</span>
                         </a>
@@ -489,10 +497,10 @@
                 </div>
                 <!-- Interactive Prev/Next Controls -->
                 <div class="flex items-center gap-3">
-                    <button id="capsule-prev" class="w-12 h-12 rounded-full border border-surface-container-high bg-surface hover:bg-on-secondary-fixed hover:text-white transition-all flex items-center justify-center text-on-surface shadow-sm active:scale-95" aria-label="Anterior">
+                    <button id="capsule-prev" class="w-12 h-12 border border-surface-container-high bg-surface hover:bg-on-secondary-fixed hover:text-white transition-all flex items-center justify-center text-on-surface shadow-sm active:scale-95" aria-label="Anterior">
                         <span class="material-symbols-outlined">chevron_left</span>
                     </button>
-                    <button id="capsule-next" class="w-12 h-12 rounded-full border border-surface-container-high bg-surface hover:bg-on-secondary-fixed hover:text-white transition-all flex items-center justify-center text-on-surface shadow-sm active:scale-95" aria-label="Siguiente">
+                    <button id="capsule-next" class="w-12 h-12 border border-surface-container-high bg-surface hover:bg-on-secondary-fixed hover:text-white transition-all flex items-center justify-center text-on-surface shadow-sm active:scale-95" aria-label="Siguiente">
                         <span class="material-symbols-outlined">chevron_right</span>
                     </button>
                 </div>
@@ -502,73 +510,73 @@
             <div id="capsule-carousel" class="flex gap-6 overflow-x-auto no-scrollbar scroll-smooth pb-6 pt-2">
                 
                 <!-- Capsule Card 1: Seguridad Corporativa -->
-                <div class="capsule-card flex-shrink-0 w-72 sm:w-80 rounded-[48px] border-2 border-surface-container-high bg-surface p-6 flex flex-col items-center text-center group cursor-pointer">
+                <div class="capsule-card flex-shrink-0 w-72 sm:w-80 border-2 border-surface-container-high bg-surface p-6 flex flex-col items-center text-center group cursor-pointer">
                     <!-- Circular Image Wrapper -->
-                    <div class="w-48 h-48 rounded-full overflow-hidden bg-white mb-6 p-2 border border-surface-container-high shadow-inner flex items-center justify-center">
+                    <div class="w-48 h-48 overflow-hidden bg-white mb-6 p-2 border border-surface-container-high shadow-inner flex items-center justify-center">
                         <img src="fotos/Camara domo.jpg" 
                              alt="Cámaras y Monitoreo IA Swiss Security" 
-                             class="capsule-img w-full h-full object-cover rounded-full"/>
+                             class="capsule-img w-full h-full object-cover"/>
                     </div>
                     <span class="text-xs uppercase font-headline font-bold tracking-widest text-primary mb-2">01 / Tecnología</span>
                     <h3 class="font-headline font-bold text-xl text-on-secondary-fixed mb-3">Cámaras y Monitoreo IA</h3>
                     <p class="text-xs text-secondary leading-relaxed mb-6">
                         Detección proactiva de intrusos, reconocimiento de patentes vehiculares y análisis perimetral 24/7 sin puntos ciegos.
                     </p>
-                    <a href="#contacto" class="mt-auto px-5 py-2.5 rounded-full text-xs font-headline font-bold border border-primary text-primary group-hover:bg-primary group-hover:text-white transition-all duration-300">
+                    <a href="#contacto" class="mt-auto px-5 py-2.5 text-xs font-headline font-bold border border-primary text-primary group-hover:bg-primary group-hover:text-white transition-all duration-300">
                         Cotizar Solución
                     </a>
                 </div>
 
                 <!-- Capsule Card 2: Guardias Certificados OS10 -->
-                <div class="capsule-card flex-shrink-0 w-72 sm:w-80 rounded-[48px] border-2 border-surface-container-high bg-surface p-6 flex flex-col items-center text-center group cursor-pointer">
+                <div class="capsule-card flex-shrink-0 w-72 sm:w-80 border-2 border-surface-container-high bg-surface p-6 flex flex-col items-center text-center group cursor-pointer">
                     <!-- Circular Image Wrapper -->
-                    <div class="w-48 h-48 rounded-full overflow-hidden bg-white mb-6 p-2 border border-surface-container-high shadow-inner flex items-center justify-center">
+                    <div class="w-48 h-48 overflow-hidden bg-white mb-6 p-2 border border-surface-container-high shadow-inner flex items-center justify-center">
                         <img src="fotos/hombre central monitoreo transparente.webp" 
                              alt="Guardias Certificados OS10 y Central de Monitoreo" 
-                             class="capsule-img w-full h-full object-cover rounded-full"/>
+                             class="capsule-img w-full h-full object-cover"/>
                     </div>
                     <span class="text-xs uppercase font-headline font-bold tracking-widest text-primary mb-2">02 / Seguridad Física</span>
                     <h3 class="font-headline font-bold text-xl text-on-secondary-fixed mb-3">Guardias OS10</h3>
                     <p class="text-xs text-secondary leading-relaxed mb-6">
                         Personal uniformado rigurosamente seleccionado con acreditación vigente de Carabineros de Chile para control de acceso y rondas.
                     </p>
-                    <a href="#contacto" class="mt-auto px-5 py-2.5 rounded-full text-xs font-headline font-bold border border-primary text-primary group-hover:bg-primary group-hover:text-white transition-all duration-300">
+                    <a href="#contacto" class="mt-auto px-5 py-2.5 text-xs font-headline font-bold border border-primary text-primary group-hover:bg-primary group-hover:text-white transition-all duration-300">
                         Cotizar Solución
                     </a>
                 </div>
 
                 <!-- Capsule Card 3: Industrial & Faenas -->
-                <div class="capsule-card flex-shrink-0 w-72 sm:w-80 rounded-[48px] border-2 border-surface-container-high bg-surface p-6 flex flex-col items-center text-center group cursor-pointer">
+                <div class="capsule-card flex-shrink-0 w-72 sm:w-80 border-2 border-surface-container-high bg-surface p-6 flex flex-col items-center text-center group cursor-pointer">
                     <!-- Circular Image Wrapper -->
-                    <div class="w-48 h-48 rounded-full overflow-hidden bg-white mb-6 p-2 border border-surface-container-high shadow-inner flex items-center justify-center">
+                    <div class="w-48 h-48 overflow-hidden bg-white mb-6 p-2 border border-surface-container-high shadow-inner flex items-center justify-center">
                         <img src="fotos/edificios.webp" 
                              alt="Seguridad para Minería, Logística y Edificios Corporativos" 
-                             class="capsule-img w-full h-full object-cover rounded-full"/>
+                             class="capsule-img w-full h-full object-cover"/>
                     </div>
                     <span class="text-xs uppercase font-headline font-bold tracking-widest text-primary mb-2">03 / Gran Escala</span>
                     <h3 class="font-headline font-bold text-xl text-on-secondary-fixed mb-3">Minería &amp; Logística</h3>
                     <p class="text-xs text-secondary leading-relaxed mb-6">
                         Vigilancia de bodegas de alto valor, faenas remotas con torres solares autónomas de televigilancia satelital.
                     </p>
-                    <a href="#contacto" class="mt-auto px-5 py-2.5 rounded-full text-xs font-headline font-bold border border-primary text-primary group-hover:bg-primary group-hover:text-white transition-all duration-300">
+                    <a href="#contacto" class="mt-auto px-5 py-2.5 text-xs font-headline font-bold border border-primary text-primary group-hover:bg-primary group-hover:text-white transition-all duration-300">
                         Cotizar Solución
                     </a>
                 </div>
 
                 <!-- Capsule Card 4: Facility Services & TI -->
-                <div class="capsule-card flex-shrink-0 w-72 sm:w-80 rounded-[48px] border-2 border-surface-container-high bg-surface p-6 flex flex-col items-center text-center group cursor-pointer">
+                <div class="capsule-card flex-shrink-0 w-72 sm:w-80 border-2 border-surface-container-high bg-surface p-6 flex flex-col items-center text-center group cursor-pointer">
                     <!-- Circular Image Wrapper -->
-                    <div class="w-48 h-48 rounded-full overflow-hidden bg-white mb-6 p-2 border border-surface-container-high shadow-inner flex items-center justify-center">
+                    <div class="w-48 h-48 overflow-hidden bg-white mb-6 p-2 border border-surface-container-high shadow-inner flex items-center justify-center">
                         <img src="fotos/hombre central monitoreo.jpg" 
                              alt="Servicios de Infraestructura y Redes TI" 
-                             class="capsule-img w-full h-full object-cover rounded-full"/>
+                             class="capsule-img w-full h-full object-cover"/>
                     </div>
                     <span class="text-xs uppercase font-headline font-bold tracking-widest text-primary mb-2">04 / Integración</span>
                     <h3 class="font-headline font-bold text-xl text-on-secondary-fixed mb-3">Infraestructura &amp; Redes TI</h3>
                     <p class="text-xs text-secondary leading-relaxed mb-6">
                         Mantenimiento electromecánico, cableado estructurado, torniquetes biométricos e infraestructura tecnológica para edificios.
                     </p>
-                    <a href="#contacto" class="mt-auto px-5 py-2.5 rounded-full text-xs font-headline font-bold border border-primary text-primary group-hover:bg-primary group-hover:text-white transition-all duration-300">
+                    <a href="#contacto" class="mt-auto px-5 py-2.5 text-xs font-headline font-bold border border-primary text-primary group-hover:bg-primary group-hover:text-white transition-all duration-300">
                         Cotizar Solución
                     </a>
                 </div>
@@ -584,35 +592,35 @@
             <h2 class="font-headline text-3xl sm:text-4xl font-extrabold mb-12">Estamos Presentes en Sectores Clave</h2>
             
             <div class="grid grid-cols-2 sm:grid-cols-4 gap-6">
-                <div class="p-6 rounded-2xl bg-white/5 border border-white/10 hover:border-primary/50 transition-all duration-300 hover:scale-105 flex flex-col items-center">
+                <div class="p-6 bg-white/5 border border-white/10 hover:border-primary/50 transition-all duration-300 hover:scale-105 flex flex-col items-center">
                     <span class="material-symbols-outlined text-primary text-4xl mb-3">storefront</span>
                     <span class="font-headline font-semibold text-sm">Retail &amp; Centros Comerciales</span>
                 </div>
-                <div class="p-6 rounded-2xl bg-white/5 border border-white/10 hover:border-primary/50 transition-all duration-300 hover:scale-105 flex flex-col items-center">
+                <div class="p-6 bg-white/5 border border-white/10 hover:border-primary/50 transition-all duration-300 hover:scale-105 flex flex-col items-center">
                     <span class="material-symbols-outlined text-primary text-4xl mb-3">domain</span>
                     <span class="font-headline font-semibold text-sm">Edificios Corporativos</span>
                 </div>
-                <div class="p-6 rounded-2xl bg-white/5 border border-white/10 hover:border-primary/50 transition-all duration-300 hover:scale-105 flex flex-col items-center">
+                <div class="p-6 bg-white/5 border border-white/10 hover:border-primary/50 transition-all duration-300 hover:scale-105 flex flex-col items-center">
                     <span class="material-symbols-outlined text-primary text-4xl mb-3">settings</span>
                     <span class="font-headline font-semibold text-sm">Minería &amp; Energía</span>
                 </div>
-                <div class="p-6 rounded-2xl bg-white/5 border border-white/10 hover:border-primary/50 transition-all duration-300 hover:scale-105 flex flex-col items-center">
+                <div class="p-6 bg-white/5 border border-white/10 hover:border-primary/50 transition-all duration-300 hover:scale-105 flex flex-col items-center">
                     <span class="material-symbols-outlined text-primary text-4xl mb-3">engineering</span>
                     <span class="font-headline font-semibold text-sm">Construcción &amp; Obras</span>
                 </div>
-                <div class="p-6 rounded-2xl bg-white/5 border border-white/10 hover:border-primary/50 transition-all duration-300 hover:scale-105 flex flex-col items-center">
+                <div class="p-6 bg-white/5 border border-white/10 hover:border-primary/50 transition-all duration-300 hover:scale-105 flex flex-col items-center">
                     <span class="material-symbols-outlined text-primary text-4xl mb-3">school</span>
                     <span class="font-headline font-semibold text-sm">Instituciones Educacionales</span>
                 </div>
-                <div class="p-6 rounded-2xl bg-white/5 border border-white/10 hover:border-primary/50 transition-all duration-300 hover:scale-105 flex flex-col items-center">
+                <div class="p-6 bg-white/5 border border-white/10 hover:border-primary/50 transition-all duration-300 hover:scale-105 flex flex-col items-center">
                     <span class="material-symbols-outlined text-primary text-4xl mb-3">home_work</span>
                     <span class="font-headline font-semibold text-sm">Condominios Exclusivos</span>
                 </div>
-                <div class="p-6 rounded-2xl bg-white/5 border border-white/10 hover:border-primary/50 transition-all duration-300 hover:scale-105 flex flex-col items-center">
+                <div class="p-6 bg-white/5 border border-white/10 hover:border-primary/50 transition-all duration-300 hover:scale-105 flex flex-col items-center">
                     <span class="material-symbols-outlined text-primary text-4xl mb-3">account_balance</span>
                     <span class="font-headline font-semibold text-sm">Banca &amp; Custodia</span>
                 </div>
-                <div class="p-6 rounded-2xl bg-white/5 border border-white/10 hover:border-primary/50 transition-all duration-300 hover:scale-105 flex flex-col items-center">
+                <div class="p-6 bg-white/5 border border-white/10 hover:border-primary/50 transition-all duration-300 hover:scale-105 flex flex-col items-center">
                     <span class="material-symbols-outlined text-primary text-4xl mb-3">flight_takeoff</span>
                     <span class="font-headline font-semibold text-sm">Centros de Distribución</span>
                 </div>
@@ -635,7 +643,7 @@
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch">
                 
                 <!-- Testimonio 1 -->
-                <div class="p-8 rounded-3xl bg-surface-container-lowest border border-surface-container-high tech-shadow tech-shadow-hover flex flex-col justify-between reveal">
+                <div class="p-8 bg-surface-container-lowest border border-surface-container-high tech-shadow tech-shadow-hover flex flex-col justify-between reveal">
                     <div class="space-y-4">
                         <div class="flex text-amber-400">
                             <span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">star</span>
@@ -649,7 +657,7 @@
                         </p>
                     </div>
                     <div class="flex items-center gap-3 pt-6 border-t border-surface-container mt-6">
-                        <div class="w-10 h-10 rounded-full bg-primary/10 text-primary font-headline font-bold flex items-center justify-center text-xs">
+                        <div class="w-10 h-10 bg-primary/10 text-primary font-headline font-bold flex items-center justify-center text-xs">
                             CR
                         </div>
                         <div>
@@ -660,7 +668,7 @@
                 </div>
 
                 <!-- Testimonio 2 (Tarjeta Central Destacada Oscura) -->
-                <div class="p-8 rounded-3xl bg-[#121316] text-white tech-shadow border-2 border-primary/40 transform md:-translate-y-2 flex flex-col justify-between shadow-2xl reveal delay-100">
+                <div class="p-8 bg-[#121316] text-white tech-shadow border-2 border-primary/40 transform md:-translate-y-2 flex flex-col justify-between shadow-2xl reveal delay-100">
                     <div class="space-y-4">
                         <div class="flex text-amber-400">
                             <span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">star</span>
@@ -674,7 +682,7 @@
                         </p>
                     </div>
                     <div class="flex items-center gap-3 pt-6 border-t border-white/10 mt-6">
-                        <div class="w-10 h-10 rounded-full bg-primary text-white font-headline font-bold flex items-center justify-center text-xs">
+                        <div class="w-10 h-10 bg-primary text-white font-headline font-bold flex items-center justify-center text-xs">
                             JM
                         </div>
                         <div>
@@ -685,7 +693,7 @@
                 </div>
 
                 <!-- Testimonio 3 -->
-                <div class="p-8 rounded-3xl bg-surface-container-lowest border border-surface-container-high tech-shadow tech-shadow-hover flex flex-col justify-between reveal delay-200">
+                <div class="p-8 bg-surface-container-lowest border border-surface-container-high tech-shadow tech-shadow-hover flex flex-col justify-between reveal delay-200">
                     <div class="space-y-4">
                         <div class="flex text-amber-400">
                             <span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">star</span>
@@ -699,7 +707,7 @@
                         </p>
                     </div>
                     <div class="flex items-center gap-3 pt-6 border-t border-surface-container mt-6">
-                        <div class="w-10 h-10 rounded-full bg-primary/10 text-primary font-headline font-bold flex items-center justify-center text-xs">
+                        <div class="w-10 h-10 bg-primary/10 text-primary font-headline font-bold flex items-center justify-center text-xs">
                             ML
                         </div>
                         <div>
@@ -716,15 +724,15 @@
     <!-- 9. Banner Pre-Footer de Alto Impacto -->
     <section class="py-12 bg-surface">
         <div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
-            <div class="relative rounded-3xl overflow-hidden bg-gradient-to-r from-[#191c20] via-[#2c2e33] to-[#121316] text-white p-8 sm:p-12 md:p-16 tech-shadow flex flex-col md:flex-row items-center justify-between gap-8 group">
+            <div class="relative overflow-hidden bg-gradient-to-r from-[#191c20] via-[#2c2e33] to-[#121316] text-white p-8 sm:p-12 md:p-16 tech-shadow flex flex-col md:flex-row items-center justify-between gap-8 group">
                 
                 <!-- Background Glow -->
-                <div class="absolute -right-20 -bottom-20 w-96 h-96 bg-primary/20 rounded-full blur-3xl pointer-events-none"></div>
+                <div class="absolute -right-20 -bottom-20 w-96 h-96 bg-primary/20 blur-3xl pointer-events-none"></div>
 
                 <div class="space-y-4 max-w-xl z-10">
                     <div class="flex items-center gap-3">
                         <img src="fotos/logo_cropped.png" alt="Swiss Security Logo" class="h-8 w-auto object-contain drop-shadow" />
-                        <span class="text-xs uppercase font-headline font-bold tracking-widest text-primary-container bg-white/10 px-3 py-1 rounded-full border border-white/15">Diagnóstico en Terreno Sin Costo</span>
+                        <span class="text-xs uppercase font-headline font-bold tracking-widest text-primary-container bg-white/10 px-3 py-1 border border-white/15">Diagnóstico en Terreno Sin Costo</span>
                     </div>
                     <h3 class="font-headline text-3xl sm:text-4xl md:text-5xl font-extrabold leading-tight text-white">
                         ¿Listo para Fortalecer la Seguridad de su Empresa?
@@ -735,7 +743,7 @@
                 </div>
 
                 <div class="z-10 flex-shrink-0">
-                    <a href="#contacto" class="btn-shimmer bg-primary hover:bg-[#C20510] text-white px-8 py-4 rounded-xl font-headline font-bold text-sm tracking-wide transition-all duration-300 tech-shadow flex items-center gap-3 group">
+                    <a href="#contacto" class="btn-shimmer bg-primary hover:bg-[#C20510] text-white px-8 py-4 font-headline font-bold text-sm tracking-wide transition-all duration-300 tech-shadow flex items-center gap-3 group">
                         <span>Solicitar Cotización Inmediata</span>
                         <span class="material-symbols-outlined text-lg transition-transform duration-300 group-hover:translate-x-1.5">arrow_forward</span>
                     </a>
@@ -763,22 +771,22 @@
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                             <div>
                                 <label class="block text-xs font-headline font-bold text-on-surface mb-1">Nombre Completo *</label>
-                                <input type="text" required placeholder="Ej: Roberto González" class="w-full px-4 py-3 rounded-xl border border-surface-container-high bg-surface text-sm text-on-surface focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-colors"/>
+                                <input type="text" required placeholder="Ej: Roberto González" class="w-full px-4 py-3 border border-surface-container-high bg-surface text-sm text-on-surface focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-colors"/>
                             </div>
                             <div>
                                 <label class="block text-xs font-headline font-bold text-on-surface mb-1">Correo Electrónico *</label>
-                                <input type="email" required placeholder="correo@empresa.cl" class="w-full px-4 py-3 rounded-xl border border-surface-container-high bg-surface text-sm text-on-surface focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-colors"/>
+                                <input type="email" required placeholder="correo@empresa.cl" class="w-full px-4 py-3 border border-surface-container-high bg-surface text-sm text-on-surface focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-colors"/>
                             </div>
                         </div>
 
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                             <div>
                                 <label class="block text-xs font-headline font-bold text-on-surface mb-1">Teléfono Móvil *</label>
-                                <input type="tel" required placeholder="+56 9 1234 5678" class="w-full px-4 py-3 rounded-xl border border-surface-container-high bg-surface text-sm text-on-surface focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-colors"/>
+                                <input type="tel" required placeholder="+56 9 1234 5678" class="w-full px-4 py-3 border border-surface-container-high bg-surface text-sm text-on-surface focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-colors"/>
                             </div>
                             <div>
                                 <label class="block text-xs font-headline font-bold text-on-surface mb-1">Servicio de Interés</label>
-                                <select class="w-full px-4 py-3 rounded-xl border border-surface-container-high bg-surface text-sm text-on-surface focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-colors">
+                                <select class="w-full px-4 py-3 border border-surface-container-high bg-surface text-sm text-on-surface focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-colors">
                                     <option>Guardias de Seguridad OS10</option>
                                     <option>Cámaras y Monitoreo con IA</option>
                                     <option>Seguridad Industrial &amp; Minería</option>
@@ -790,10 +798,10 @@
 
                         <div>
                             <label class="block text-xs font-headline font-bold text-on-surface mb-1">Detalle del requerimiento o mensaje</label>
-                            <textarea rows="4" placeholder="Describa brevemente la instalación, ubicación y cantidad de turnos o requerimientos..." class="w-full px-4 py-3 rounded-xl border border-surface-container-high bg-surface text-sm text-on-surface focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-colors resize-none"></textarea>
+                            <textarea rows="4" placeholder="Describa brevemente la instalación, ubicación y cantidad de turnos o requerimientos..." class="w-full px-4 py-3 border border-surface-container-high bg-surface text-sm text-on-surface focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-colors resize-none"></textarea>
                         </div>
 
-                        <button type="submit" class="btn-shimmer bg-primary hover:bg-[#C20510] text-white px-8 py-3.5 rounded-xl font-headline font-bold text-sm tracking-wide transition-all duration-300 tech-shadow flex items-center justify-center gap-2 w-full sm:w-auto">
+                        <button type="submit" class="btn-shimmer bg-primary hover:bg-[#C20510] text-white px-8 py-3.5 font-headline font-bold text-sm tracking-wide transition-all duration-300 tech-shadow flex items-center justify-center gap-2 w-full sm:w-auto">
                             <span>Enviar Solicitud</span>
                             <span class="material-symbols-outlined text-sm">send</span>
                         </button>
@@ -802,7 +810,7 @@
 
                 <!-- Info & Image Column -->
                 <div class="lg:col-span-5 space-y-6">
-                    <div class="p-6 rounded-2xl bg-surface border border-surface-container-high space-y-4">
+                    <div class="p-6 bg-surface border border-surface-container-high space-y-4">
                         <div class="flex items-start gap-4">
                             <span class="material-symbols-outlined text-primary text-2xl mt-0.5">location_on</span>
                             <div>
@@ -826,7 +834,7 @@
                         </div>
                     </div>
 
-                    <div class="rounded-2xl overflow-hidden tech-shadow h-64 relative group">
+                    <div class="overflow-hidden tech-shadow h-64 relative group">
                         <img src="fotos/edificios.webp" 
                              alt="Oficinas Corporativas Swiss Security - Vitacura" 
                              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"/>
@@ -865,8 +873,8 @@
                         Suscríbase a nuestro informe mensual sobre tendencias de ciberseguridad, prevención del delito y protocolos de control para empresas.
                     </p>
                     <div class="flex items-center max-w-sm">
-                        <input type="email" placeholder="Ingrese su email corporativo" class="w-full px-4 py-2.5 rounded-l-xl border border-surface-container-high text-xs text-on-surface focus:outline-none focus:border-primary"/>
-                        <button class="bg-primary text-white px-4 py-2.5 rounded-r-xl hover:bg-[#C20510] transition-colors flex items-center justify-center" aria-label="Suscribirse">
+                        <input type="email" placeholder="Ingrese su email corporativo" class="w-full px-4 py-2.5 border border-surface-container-high text-xs text-on-surface focus:outline-none focus:border-primary"/>
+                        <button class="bg-primary text-white px-4 py-2.5 hover:bg-[#C20510] transition-colors flex items-center justify-center" aria-label="Suscribirse">
                             <span class="material-symbols-outlined text-sm">send</span>
                         </button>
                     </div>
@@ -923,9 +931,9 @@
     <a href="https://wa.me/56912345678?text=Hola,%20deseo%20cotizar%20servicios%20de%20seguridad%20con%20Swiss%20Security" 
        target="_blank" 
        rel="noopener noreferrer" 
-       class="fixed bottom-6 right-6 z-50 bg-[#25D366] text-white p-3.5 rounded-full shadow-2xl hover:scale-110 active:scale-95 transition-all duration-300 tech-shadow flex items-center justify-center group" 
+       class="fixed bottom-6 right-6 z-50 bg-[#25D366] text-white p-3.5 shadow-2xl hover:scale-110 active:scale-95 transition-all duration-300 tech-shadow flex items-center justify-center group" 
        aria-label="Contactar por WhatsApp">
-        <span class="absolute -top-10 right-0 bg-[#191c20] text-white text-[11px] font-headline font-semibold px-3 py-1 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap shadow-md pointer-events-none">
+        <span class="absolute -top-10 right-0 bg-[#191c20] text-white text-[11px] font-headline font-semibold px-3 py-1 opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap shadow-md pointer-events-none">
             ¿Deseas cotizar? Chatea aquí
         </span>
         <svg fill="currentColor" height="28" viewBox="0 0 16 16" width="28" xmlns="http://www.w3.org/2000/svg">
