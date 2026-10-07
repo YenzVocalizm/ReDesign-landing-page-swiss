@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html class="light scroll-smooth" lang="es">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-WWLLBDDVNM"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-WWLLBDDVNM');
+    </script>
+
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Página No Encontrada (404) | Swiss Security Chile</title>
+    <meta name="robots" content="noindex, follow"/>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg"/>
+
+    <!-- Tailwind Play CDN -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+
+    <!-- Google Fonts: Montserrat, Hanken Grotesk & Material Symbols -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+
+    <script id="tailwind-config">
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#b5000b",
+                        "primary-hover": "#930007",
+                        "on-surface": "#1a1c1c",
+                        "secondary": "#5d5e64",
+                        "surface": "#0c0d10"
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        * {
+            border-radius: 0 !important;
+        }
+        body {
+            font-family: 'Hanken Grotesk', sans-serif;
+            background-color: #0c0d10;
+            color: #ffffff;
+        }
+        h1, h2, h3, h4, .font-headline {
+            font-family: 'Montserrat', sans-serif;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between relative overflow-hidden bg-[#0c0d10]">
+    
+    <!-- Ambient Red Glow -->
+    <div class="absolute -top-40 -left-40 w-96 h-96 bg-primary/15 blur-[120px] pointer-events-none"></div>
+    <div class="absolute -bottom-40 -right-40 w-96 h-96 bg-primary/10 blur-[120px] pointer-events-none"></div>
+
+    <!-- Header Bar -->
+    <header class="w-full border-b border-white/10 py-5 px-6 sm:px-12 relative z-10 flex items-center justify-between">
+        <a href="index.html" class="flex items-center gap-3">
+            <img src="fotos/logo_dark.png" alt="Swiss Security Logo" class="h-10 w-auto object-contain brightness-110"/>
+        </a>
+        <div class="flex items-center gap-2 text-xs font-bold text-white/80 bg-white/5 border border-white/10 px-3.5 py-1.5">
+            <span class="material-symbols-outlined text-primary text-sm">verified</span>
+            <span>Acreditación OS10</span>
+        </div>
+    </header>
+
+    <!-- Main 404 Content -->
+    <main class="flex-grow flex items-center justify-center px-6 py-16 relative z-10">
+        <div class="max-w-xl text-center space-y-6">
+            
+            <div class="inline-flex items-center gap-2 text-primary bg-primary/10 border border-primary/25 px-4 py-1.5 text-xs font-headline font-bold uppercase tracking-widest">
+                <span class="material-symbols-outlined text-base">error_outline</span>
+                <span>Error 404 / Enlace No Encontrado</span>
+            </div>
+
+            <h1 class="font-headline text-6xl sm:text-8xl font-black text-white tracking-tight">
+                404
+            </h1>
+
+            <h2 class="font-headline text-2xl sm:text-3xl font-extrabold text-white">
+                El recurso solicitado no está disponible
+            </h2>
+
+            <p class="text-sm sm:text-base text-white/70 leading-relaxed max-w-md mx-auto">
+                La dirección a la que intentó acceder ha sido modificada, reubicada o ya no existe en nuestro servidor corporativo.
+            </p>
+
+            <div class="pt-4 flex flex-col sm:flex-row items-center justify-center gap-4">
+                <a href="index.html" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-primary hover:bg-[#930007] text-white px-7 py-3.5 font-headline font-bold text-xs uppercase tracking-wider transition-all shadow-xl">
+                    <span class="material-symbols-outlined text-base">home</span>
+                    <span>Volver al Inicio</span>
+                </a>
+
+                <a href="https://wa.me/56956508297?text=Hola%2C%20necesito%20asistencia%20en%20Swiss%20Security." 
+                   target="_blank" 
+                   rel="noopener noreferrer"
+                   class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-white/10 hover:bg-white/20 text-white border border-white/20 px-7 py-3.5 font-headline font-bold text-xs uppercase tracking-wider transition-all">
+                    <span class="material-symbols-outlined text-emerald-400 text-base">chat</span>
+                    <span>Contactar Asesor</span>
+                </a>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Footer Bar -->
+    <footer class="w-full border-t border-white/10 py-5 px-6 text-center text-xs text-white/50 relative z-10">
+        <p>&copy; 2026 Swiss Security Chile. Todos los derechos reservados. Seguridad Privada OS10 Carabineros.</p>
+    </footer>
+
+</body>
+</html>
